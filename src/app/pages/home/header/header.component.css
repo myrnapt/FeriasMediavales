@@ -3,35 +3,14 @@
   height: 60vh;
 }
 
-form {
-  width: 50vw;
-  margin-right: auto !important;
-  margin-left: auto !important;
+h4 {
+  margin-left: 21vw;
+  margin-right: 21vw;
 }
 
-.form-control::-moz-placeholder {
-  font-size: 0.95rem;
-  color: #aaa;
-  font-style: italic;
-}
-
-.form-control::placeholder {
-  font-size: 0.95rem;
-  color: #aaa;
-  font-style: italic;
-}
-
-.form-control:focus {
-  box-shadow: none;
-}
-
-.form-control-underlined {
-  border-width: 0;
-  border-bottom-width: 1px;
-  border-radius: 0;
-  padding-left: 0;
-}
-
-.img {
-  height: 500px;
+h1 {
+  margin-top: 5%;
+  font-family: "Crimson Text", serif;
+  font-weight: 700;
+  font-size: 3vw;
 }/*# sourceMappingURL=header.component.css.map */

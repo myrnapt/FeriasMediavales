@@ -9,6 +9,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { PopupComponent } from './shared/popup/popup.component';
 import { OrganizerComponent } from './pages/organizers/organizer/organizer.component';
 import { HomeComponent } from './pages/home/home.component';
+import { SearchbarComponent } from './pages/home/searchbar/searchbar.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HomeComponent } from './pages/home/home.component';
     PopupComponent,
     OrganizerComponent,
     HomeComponent,
+    SearchbarComponent
   ],
   imports: [
     BrowserModule,
