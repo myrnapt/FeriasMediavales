@@ -1,7 +1,7 @@
 #header {
     background-color: #eeedeb;
     height: 60vh;
-    margin: 0;
+    display: inline;
 }
 
 h4 {
@@ -26,4 +26,8 @@ h1 {
     font-family: 'Crimson Text', serif;
     font-weight: 700;
     font-size:3vw;
+}
+
+img {
+    width: 30vw;
 }

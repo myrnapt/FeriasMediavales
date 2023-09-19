@@ -1,27 +1,25 @@
-<div class="row" id="title">
-  <div class="col-12 m-5">
-    <h1 class='text-center'>
-      Proximos eventos
-    </h1>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <div class="card-deck">
-        <div class="card"  *ngFor="let item of arrayPrueba;">
-          <img
-            class="card-img-top"
-            src="./assets/descarga.svg"
-            alt="Card image cap" />
-          <div class="card-body">
-            <h5 class="card-title">{{item.titulo}}</h5>
-            <p class="card-text">
-             {{item.ubicacion}} <br>
-             {{item.fecha}}
-            </p>
-          </div>
+<hr>
+<div class="blog-home2 ">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 text-center">
+        <h3 class="my-3">Proximos eventos</h3>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-3 on-hover"  *ngFor="let item of arrayPrueba;">
+        <div class="card border-0 mb-4">
+          <img class="card-img-top"
+              src="https://uning.es/wp-content/uploads/2016/08/ef3-placeholder-image.jpg"
+              alt="wrappixel kit">
+          <div
+            class="date-pos bg-info-gradiant p-2 d-inline-block text-center rounded text-white position-absolute">Oct<span
+              class="d-block">23</span></div>
+          <h5 class="font-weight-medium m-3">{{item.titulo}}</h5>
+          <p class="m-3">{{item.ubicacion}}</p>
+          <a href="#" class="text-decoration-none linking text-themecolor m-3"> Mas info </a>
         </div>
       </div>
     </div>
-
   </div>
 </div>
