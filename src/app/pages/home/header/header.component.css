@@ -4,8 +4,12 @@
 }
 
 h4 {
-  margin-left: 21vw;
-  margin-right: 21vw;
+  margin-left: 6vw;
+  margin-right: 6vw;
+  font-size: 1.3vw;
+  font-weight: 400;
+  text-size-adjust: auto;
+
 }
 
 h1 {
@@ -13,4 +17,11 @@ h1 {
   font-family: "Crimson Text", serif;
   font-weight: 700;
   font-size: 3vw;
-}/*# sourceMappingURL=header.component.css.map */
+}
+
+img {
+  display: flex;
+  height: auto;
+  width: auto;
+}
+

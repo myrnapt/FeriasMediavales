@@ -10,6 +10,8 @@ import { PopupComponent } from './shared/popup/popup.component';
 import { OrganizerComponent } from './pages/organizers/organizer/organizer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SearchbarComponent } from './pages/home/searchbar/searchbar.component';
+import { EventPreviewsComponent } from './pages/home/event-previews/event-previews.component';
+import { FaqComponent } from './pages/home/faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SearchbarComponent } from './pages/home/searchbar/searchbar.component';
     PopupComponent,
     OrganizerComponent,
     HomeComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    EventPreviewsComponent,
+    FaqComponent,
   ],
   imports: [
     BrowserModule,
