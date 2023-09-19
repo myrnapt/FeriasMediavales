@@ -7,4 +7,23 @@ import { Component } from '@angular/core';
 })
 export class EventPreviewsComponent {
 
+arrayPrueba: any = [
+  {titulo: 'Mercado 1',
+  ubicacion: 'Sarria, Barcelona',
+  fecha: '10/02/2024'
+  },
+  {titulo: 'Mercado 2',
+  ubicacion: 'Sarria, Barcelona',
+  fecha: '10/02/2024'
+  },
+  {titulo: 'Mercado 3',
+  ubicacion: 'Sarria, Barcelona',
+  fecha: '10/02/2024'
+  },
+  {titulo: 'Mercado 4',
+  ubicacion: 'Sarria, Barcelona',
+  fecha: '10/02/2024'
+  },
+]
+
 }

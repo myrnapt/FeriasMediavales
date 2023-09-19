@@ -2,7 +2,8 @@ body {
   color: #333;
   background: #fcfcfc;
   font-family: 'Raleway', sans-serif;
-  overflow-x: hidden;
+  width: 50vw;
+  margin: 0 auto;
 }
 
 .faq-header{
@@ -16,7 +17,7 @@ body {
 }
 
 .faq-question {
-  padding: 20px 0;
+  padding: 20px 10px;
   border-bottom: 1px dotted #ccc;
 }
 
@@ -31,12 +32,13 @@ body {
 }
 
 .panel-content {
+  margin-left: 5%!important;
+  margin-right: 5%!important;
   font-size: 20px;
   padding: 0px 14px;
   margin: 0 40px;
   height: 0;
   overflow: hidden;
-  z-index: -1;
   position: relative;
   opacity: 0;
   -webkit-transition: .4s ease;
@@ -54,9 +56,9 @@ body {
 .plus {
   position: absolute;
   margin-left: 20px;
-  margin-top: 4px;
+  margin-top: 10px;
   z-index: 5;
-  font-size: 42px;
+  font-size: 32px;
   line-height: 100%;
   -webkit-user-select: none;    
   -moz-user-select: none;

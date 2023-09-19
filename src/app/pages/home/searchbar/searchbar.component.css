@@ -1,11 +1,11 @@
 form {
-    width: 30vw;
+    width: 20vw;
     margin-right: auto!important;
     margin-left: auto!important;
 }
 
 .form-control::placeholder {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #aaa;
     font-style: italic;
 }

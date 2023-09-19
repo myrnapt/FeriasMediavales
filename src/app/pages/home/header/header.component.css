@@ -1,27 +1,29 @@
 #header {
   background-color: #eeedeb;
   height: 60vh;
+  margin: 0;
 }
 
 h4 {
-  margin-left: 6vw;
-  margin-right: 6vw;
-  font-size: 1.3vw;
+  margin-right: 5vh;
+  margin-left: 5vh;
+  font-size: 1.5vw;
   font-weight: 400;
-  text-size-adjust: auto;
+  font-style: italic;
+  text-align: center;
+}
 
+h5 {
+  margin-top: 15vh;
+  margin-right: 5vh;
+  margin-left: 5vh;
+  font-style: italic;
 }
 
 h1 {
-  margin-top: 5%;
+  margin-top: 3vh;
+  margin-bottom: 0;
   font-family: "Crimson Text", serif;
   font-weight: 700;
   font-size: 3vw;
-}
-
-img {
-  display: flex;
-  height: auto;
-  width: auto;
-}
-
+}/*# sourceMappingURL=header.component.css.map */
