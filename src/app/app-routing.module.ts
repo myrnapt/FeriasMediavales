@@ -5,7 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { FairsComponent } from './pages/fairs/fairs.component';
 import { ErrorPageComponent } from './pages/errorPage/errorPage.component';
-import { AdminComponent } from './pages/admin/admin.component';
+import { AdminComponent } from './auth/admin/admin.component';
 
 const routes: Routes = [
   { 

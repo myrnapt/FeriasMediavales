@@ -15,7 +15,11 @@ import { FaqComponent } from './pages/home/faq/faq.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { FairsComponent } from './pages/fairs/fairs.component';
 import { ErrorPageComponent } from './pages/errorPage/errorPage.component';
-import { AdminComponent } from './pages/admin/admin.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 const cookieConfig:NgcCookieConsentConfig = {
   "cookie": {
@@ -60,13 +64,16 @@ const cookieConfig:NgcCookieConsentConfig = {
     ContactComponent,
     FairsComponent,
     ErrorPageComponent,
-    AdminComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    NoopAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
