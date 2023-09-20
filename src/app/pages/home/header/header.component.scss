@@ -31,3 +31,87 @@ h1 {
 img {
     width: 30vw;
 }
+
+@media screen and (max-width: 700px) {
+
+    .row {
+        margin: 0;
+    }
+
+    #header {
+        background-color: #eeedeb;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    h4 {
+        font-size:5vw;
+        font-weight: 400;
+        font-style: italic;
+        text-align: center;
+        margin-top: 0;
+        padding-top: 0;
+        
+    }
+    
+    h5 {
+        margin-top: 0;
+        margin-right: 0;
+        margin-left: 0;
+        font-style: italic;
+        font-size:5vw;
+    }
+    
+    h1 {
+        font-family: 'Crimson Text', serif;
+        font-weight: 700;
+        font-size:10vw!important;
+    }
+    
+    img {
+        width: 80vw;
+    }
+}
+
+
+@media  (min-width: 701px) and (max-width: 1000px) {
+
+    .row {
+        margin: 0;
+    }
+    
+    #header {
+        background-color: #eeedeb;
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    h4 {
+        font-size:3vw;
+        font-weight: 400;
+        font-style: italic;
+        text-align: center;
+        margin-top: 0;
+        padding-top: 0;
+        
+    }
+    
+    h5 {
+        margin-top: 0;
+        margin-right: 0;
+        margin-left: 0;
+        font-style: italic;
+        font-size:3vw;
+    }
+    
+    h1 {
+        font-family: 'Crimson Text', serif;
+        font-weight: 700;
+        font-size:5vw!important;
+    }
+    
+    img {
+        width: 80vw;
+    }
+    
+}

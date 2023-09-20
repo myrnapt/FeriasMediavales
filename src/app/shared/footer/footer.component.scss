@@ -1,0 +1,113 @@
+form {
+    padding-top: 3vh!important;
+}
+
+  .site-footer {
+    background-color: #261709;
+    border-top: 1px solid #fff;
+    width: 100%;
+  }
+  
+  .footer-box {
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .social-icons {
+    /* Make the icons go horizontal! */
+    display:inline-flex;
+    float: center;
+    margin-bottom: 3vh;
+  }
+  
+  .copyright {
+    float: right;
+    height: 4rem;
+    margin: 2rem 1rem 0rem 1rem;
+    font-size: 20px;
+    color: #fff;
+  }
+  
+  .social-icons a {
+    margin-top: 1rem;
+  }
+  
+  @media (max-width: 490px) {
+    .social-icons {
+      margin-left: 3.5rem;
+    }
+    .copyright {
+      clear: left;
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 15px;
+      text-align: center;
+    }
+  }
+  
+  /* Adds margin-left to every icon except
+  the first one */
+  .social-icons_fb:not(:first-child),
+  .social-icons_tw:not(:first-child),
+  .social-icons_ig:not(:first-child) {
+      margin-left: 1rem;
+  }
+  
+  .social-icons_fb,
+  .social-icons_tw,
+  .social-icons_ig {
+      font-size: 0px;
+      font-size: 0rem;
+      background-color: #fff;
+      border-radius: 50%;
+      display: block;
+      height: 3.5rem;
+      position: relative;
+      text-decoration: none;
+      width: 3.5rem;
+  }
+  
+  /*The Long Sought After Hover Effect*/
+  .social-icons_fb:hover::after,
+  .social-icons_tw:hover::after,
+  .social-icons_ig:hover::after {
+      color: #8f5f3c;
+      /*moves the icons up and left,
+      note: left from orig. pos. (as in
+      place where they were before transform
+      down below)*/
+      transform: translate(-50%, -60%);
+  }
+  
+  .social-icons_fb::after,
+  .social-icons_tw::after,
+  .social-icons_ig::after {
+    font-size: 36px;
+    font-size: 2rem;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    color: #261709;
+    /*Moves the icons to center of circle*/
+    transform: translate(-50%, -50%);
+    /*Controls speed of transfrom and color
+    change when hovered*/
+    transition: color 0.3s, transform 0.3s;
+  }
+  
+  .social-icons_fb::after {
+    content: '\f39e';
+    font-family: 'fontawesome';
+  }
+  
+  .social-icons_tw::after {
+    content: '\f099';
+    font-family: 'fontawesome';
+  }
+  
+  .social-icons_ig::after {
+    content: '\f16d';
+    font-family: 'fontawesome';
+  }
+  
