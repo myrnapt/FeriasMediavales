@@ -6,6 +6,13 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { FairsComponent } from './pages/fairs/fairs.component';
 import { ErrorPageComponent } from './pages/errorPage/errorPage.component';
 import { AdminComponent } from './auth/admin/admin.component';
+import { PanelComponent } from './auth/panel/panel.component';
+import { AuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
+
+
 
 const routes: Routes = [
   { 
@@ -29,13 +36,18 @@ const routes: Routes = [
     component: ErrorPageComponent,
   },
   { 
-    path: 'admin',
+    path: 'login',
     component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectLoggedInToHome },
   },
   { 
-    path: '**',
-    redirectTo: 'error'
-  }
+    path: 'dashboard',
+    component: PanelComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
+  },
+ 
 ];
 
 @NgModule({
