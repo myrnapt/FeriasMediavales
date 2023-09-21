@@ -35,7 +35,7 @@
         <li class="nav-item">
           <a class="nav-link"  routerLinkActive="active-link" routerLink="contacto"><i class="fa-solid fa-envelope"></i> CONTACTO</a>
         </li>
-        <li class="nav-item" *ngIf="">
+        <li class="nav-item" *ngIf="isUserLoggedIn">
           <a class="nav-link"  routerLinkActive="active-link" routerLink="dashboard"><i class="fa-solid fa-rectangle-list"></i> PANEL ADMINISTRADOR</a>
         </li>
       </ul>

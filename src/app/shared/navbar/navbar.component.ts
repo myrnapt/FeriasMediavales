@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'shared-navbar',
@@ -9,5 +8,10 @@ import { Observable } from 'rxjs';
 })
 export class NavbarComponent {
   
+  constructor(private authService: AuthService) {}
+
+  get isUserLoggedIn(): boolean {
+    return this.authService.isUserLoggedIn();
+  }
 
 }

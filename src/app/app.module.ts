@@ -17,11 +17,10 @@ import { FairsComponent } from './pages/fairs/fairs.component';
 import { ErrorPageComponent } from './pages/errorPage/errorPage.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth, getAuth, AngularFireAuth } from '@angular/fire/auth';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './auth/auth.module';
-import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 
 const cookieConfig:NgcCookieConsentConfig = {
   "cookie": {
@@ -77,9 +76,6 @@ const cookieConfig:NgcCookieConsentConfig = {
     provideFirestore(() => getFirestore()),
     NoopAnimationsModule,
     AuthModule,
-    AngularFireAuth,
-    AngularFireAuthGuard,
-    AngularFireModule.initializeApp(yourFirebaseConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]
