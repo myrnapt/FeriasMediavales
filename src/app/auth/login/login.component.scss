@@ -1,22 +1,28 @@
+*{
+  font-family: 'Roboto';
+}
 button {
-    background-color: #5eccd6;
     margin-top: 10%;
+    border: none;
     border-radius: 20px;
-    color: #fff;
-    padding: 0 50px;
+    padding: 150 50px;
+    width: 50%;
+    background-color: rgb(244, 240, 237);
   }
+
+  button:hover {
+    background-color: rgb(197, 178, 168)!important;
+  }
+  
   
   form {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    height: 200px;
-    width: 300px;
-    margin: 0 auto;
-    margin-top: 2vh;
+    background-color: #977a66;
+    border-radius: 20px;
+    padding: 10%;
+    height: 330px;
+    width: 400px;
   }
   
-  mat-form-field {
-    width: 100%;
+  .text-primary {
+    font-style: italic;
   }
