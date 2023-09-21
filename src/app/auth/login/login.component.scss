@@ -1,5 +1,6 @@
 button {
     background-color: #5eccd6;
+    margin-top: 10%;
     border-radius: 20px;
     color: #fff;
     padding: 0 50px;
@@ -9,9 +10,11 @@ button {
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content:center;
     height: 200px;
     width: 300px;
+    margin: 0 auto;
+    margin-top: 2vh;
   }
   
   mat-form-field {
