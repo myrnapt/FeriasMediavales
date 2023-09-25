@@ -11,6 +11,8 @@ import { EventsService } from 'src/app/services/events.service';
 })
 export class DashboardComponent {
   
+
+  eventList: any[]
   form: FormGroup;
 
   constructor(
@@ -22,7 +24,11 @@ export class DashboardComponent {
       })
     }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.eventsService.getPlaces()
+    .subscribe((response) => this.eventList = response)
+
+  }
 
   logout() {
     if (!confirm('Seguro que quieres cerrar sesion?')) return;
