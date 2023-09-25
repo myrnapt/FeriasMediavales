@@ -1,28 +1,47 @@
-*{
-  font-family: 'Roboto';
+.container {
+    display: flex;
+    height: 70vh;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
 }
-button {
-    margin-top: 10%;
-    border: none;
-    border-radius: 20px;
-    padding: 150 50px;
-    width: 50%;
-    background-color: rgb(244, 240, 237);
-  }
 
-  button:hover {
-    background-color: rgb(197, 178, 168)!important;
+  @media (max-width: 575.98px) { 
+    .container {
+        display: flex;
+        height: 80vh;
+        align-items: center;
+        margin: 0 auto;
+        justify-content: center;
+    }
+   }
+
+   *{
+    font-family: 'Roboto';
   }
+  button {
+      margin-top: 10%;
+      border: none;
+      border-radius: 20px;
+      padding: 150 50px;
+      width: 50%;
+      background-color: rgb(244, 240, 237);
+    }
   
+    button:hover {
+      background-color: rgb(197, 178, 168)!important;
+    }
+    
+    
+    form {
+      background-color: #977a66;
+      border-radius: 20px;
+      padding: 10%;
+      height: 330px;
+      width: 400px;
+    }
+    
+    .text-primary {
+      font-style: italic;
+    }
   
-  form {
-    background-color: #977a66;
-    border-radius: 20px;
-    padding: 10%;
-    height: 330px;
-    width: 400px;
-  }
-  
-  .text-primary {
-    font-style: italic;
-  }

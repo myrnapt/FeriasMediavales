@@ -1,0 +1,21 @@
+<div class="container">
+  <button class="btn btn-secondary"><a (click)="logout()">Log out</a></button>
+  <h1>Panel administrador</h1>
+  <div class="row">
+    <div class="col-md-12 col-lg-6">Nuevo evento</div>
+    <div class="col-md-12 col-lg-6">Buscador</div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-lg-6">EVENTOS PENDIENTES</div>
+
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+          <label for="name" class="text-dark">PLACE</label>
+          <input class="form-control " formControlName="name" type="text" />
+      </div> 
+      <button type="submit">OK</button>
+    </form>
+
+    <div class="col-md-12 col-lg-6">EVENTOS CONFIRMADOS</div>
+  </div>
+</div>

@@ -5,9 +5,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { FairsComponent } from './pages/fairs/fairs.component';
 import { ErrorPageComponent } from './pages/errorPage/errorPage.component';
-import { AdminComponent } from './auth/admin/admin.component';
-import { PanelComponent } from './auth/panel/panel.component';
-import { AuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { AuthGuard, canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { LoginComponent } from './auth/login/login.component';
+import { DashboardComponent } from './auth/dashboard/dashboard.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
@@ -37,16 +37,16 @@ const routes: Routes = [
   },
   { 
     path: 'login',
-    component: AdminComponent,
+    component: LoginComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectLoggedInToHome },
   },
   { 
     path: 'dashboard',
-    component: PanelComponent,
-    canActivate: [AuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin }
+    component: DashboardComponent,
+    ...canActivate(()=> redirectUnauthorizedTo(['/login']))
   },
+  { path: '', pathMatch: 'full', redirectTo: 'home'}
  
 ];
 

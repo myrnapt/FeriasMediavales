@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "mercados-mediavales-esp"
+  },
+  "targets": {
+    "mercados-mediavales-esp": {
+      "hosting": {
+        "FeriasMediavales": [
+          "mercados-mediavales-esp"
+        ]
+      }
+    }
+  }
+}

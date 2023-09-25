@@ -1,10 +1,10 @@
 export const environment = {
   firebase: {
-    projectId: 'mercados-mediavales-esp',
-    appId: '1:1018666768574:web:7948f6fecbaa84221fa6ef',
-    storageBucket: 'mercados-mediavales-esp.appspot.com',
-    apiKey: 'AIzaSyDznG_j92PisxBcIaVFamKNWZw9j6OUn6I',
-    authDomain: 'mercados-mediavales-esp.firebaseapp.com',
-    messagingSenderId: '1018666768574',
+  apiKey: "AIzaSyCBgxoOESxQ6G4ejcUizbtDpBcZuHkNIKs",
+  authDomain: "mercados-mediavales.firebaseapp.com",
+  projectId: "mercados-mediavales",
+  storageBucket: "mercados-mediavales.appspot.com",
+  messagingSenderId: "946167171448",
+  appId: "1:946167171448:web:4a43416b7ae1d9fa0f608d"
   },
 };

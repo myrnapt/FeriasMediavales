@@ -5,14 +5,12 @@ import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import { AdminComponent } from './admin/admin.component';
-import { PanelComponent } from './panel/panel.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    AdminComponent,
-    PanelComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
