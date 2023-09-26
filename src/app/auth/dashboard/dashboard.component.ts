@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Events } from 'src/app/interfaces/events.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { EventsService } from 'src/app/services/events.service';
 
@@ -12,22 +13,29 @@ import { EventsService } from 'src/app/services/events.service';
 export class DashboardComponent {
   
 
-  eventList: any[]
+  eventList: Events[]
   form: FormGroup;
 
   constructor(
     private authService: AuthService, 
     private eventsService: EventsService,
-    private router: Router) {
+    private router: Router) 
+    {
       this.form = new FormGroup({
-        name: new FormControl()
-      })
+        name: new FormControl(),
+      }),
+      this.eventList = [{
+        name: 'Prueba',
+      }]
     }
 
   ngOnInit(): void {
-    this.eventsService.getPlaces()
-    .subscribe((response) => this.eventList = response)
-
+    this.eventsService.getPlaces().subscribe((response) =>
+    {
+      console.log(response),
+      this.eventList = response
+    }
+     )
   }
 
   logout() {
@@ -38,8 +46,9 @@ export class DashboardComponent {
   }
 
   async onSubmit() {
-    const resp = await this.eventsService.addPlace(this.form.value);
-    console.log(resp);
-
+    console.log(this.form.value);
+    let resp = await this.eventsService.addPlace(this.form.value);
+    this.form.reset()
+    //console.log(resp);
   }
 }
