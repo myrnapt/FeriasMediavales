@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     DashboardComponent,
   ],
   imports: [
+    FormsModule,
     CommonModule,
     ReactiveFormsModule,
     MatInputModule,

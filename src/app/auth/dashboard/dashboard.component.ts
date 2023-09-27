@@ -1,28 +1,24 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Events } from 'src/app/interfaces/events.interface';
 import { AuthService } from 'src/app/services/auth.service';
-import { EventsService } from 'src/app/services/events.service';
 
 @Component({
   selector: 'auth-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit  {
   
-  eventForm: FormGroup
-  eventList: Events[]
+  readonly APIUrl = "http://localhost:5038/api/mercados-mediavales/"
+  eventName: string = ''
 
   constructor(
+    private http: HttpClient,
     private authService: AuthService, 
-    private eventsService: EventsService,
     private router: Router) 
-    { this.eventForm = new FormGroup({
-      name: new FormControl(),
-    })
-  }
+    {}
  
   logout() {
     if (!confirm('Seguro que quieres cerrar sesion?')) return;
@@ -31,17 +27,31 @@ export class DashboardComponent implements OnInit {
       .catch((error) => console.log(error));
   }
 
-  
-  async onSubmit() {
-    console.log(this.eventForm.value, 'valor del formulario');
-    const response = await this.eventsService.addEvent(this.eventForm.value);
-    console.log(response, ' valor enviado a la database');
+  events: any = [];
+
+  refreshNotes(){
+    this.http.get(this.APIUrl+'get-mercados').subscribe(data => {
+      this.events = data;
+    })
   }
 
-  ngOnInit(): void {
-    console.log('PRUEBA');
-    this.eventsService.getEvents().subscribe( eventList => {
-      console.log(eventList, 'eventos en el ngOnInit');
+  ngOnInit() {
+    this.refreshNotes();
+  }
+
+  addEvent() {
+    let newEvent = this.eventName; // Use the property here
+    let formData = new FormData();
+    console.log(newEvent + 'New event');
+    formData.append("name", newEvent);
+    this.http.post(this.APIUrl + 'add-mercados', formData).subscribe(data => {
+      this.refreshNotes(); console.log(data + 'data');
+    });
+  }
+
+  deleteEvent(id: any) {
+    this.http.delete(this.APIUrl+'delete-mercado?id'+id).subscribe( data => {
+      this.refreshNotes();
     })
   }
 }

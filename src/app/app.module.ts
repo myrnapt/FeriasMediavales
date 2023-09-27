@@ -5,6 +5,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
+import { HttpClientModule } from '@angular/common/http'
 
 //COMPONENTS
 import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import { FormsModule } from '@angular/forms';
 
 //COOKIES CONFIGURATION
 const cookieConfig:NgcCookieConsentConfig = {
@@ -73,6 +75,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
@@ -81,6 +84,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     provideAuth(() => getAuth()),
     NoopAnimationsModule,
     AuthModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

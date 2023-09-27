@@ -1,5 +1,5 @@
 <div class="container">
-  <button class="btn btn-secondary"><a (click)="logout()">Log out</a></button>
+  <button class="btn btn-secondary" (click)="logout()">Log out</button>
   <h1>Panel administrador</h1>
   <div class="row">
     <div class="col-md-12 col-lg-6">Nuevo evento</div>
@@ -7,15 +7,14 @@
   </div>
   <div class="row">
     <div class="col-md-12 col-lg-6">EVENTOS PENDIENTES</div>
-
-    <form class="form" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
-      <div>
-        <label for="name" class="text-dark form-label">Name</label>
-        <input class="form-control " formControlName="name" type="text" />
-      </div>
-      <button type="submit">OK</button>
-    </form>
-
+    <div>
+      <input id="name" [(ngModel)]="eventName"> <!-- Use ngModel to bind to a component property -->
+      <button (click)="addEvent()">OK</button>
+    </div>
     <div class="col-md-12 col-lg-6">EVENTOS CONFIRMADOS</div>
+    <div *ngFor="let evento of events">
+      {{ evento.name }}
+      <button (click)="deleteEvent(evento.id)">X</button>
+    </div>
   </div>
 </div>
