@@ -1,3 +1,4 @@
+//MODULES
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -5,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
 
+//COMPONENTS
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './pages/home/header/header.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -18,11 +20,13 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { FairsComponent } from './pages/fairs/fairs.component';
 import { ErrorPageComponent } from './pages/errorPage/errorPage.component';
 
+//DATABASE
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
 
+//COOKIES CONFIGURATION
 const cookieConfig:NgcCookieConsentConfig = {
   "cookie": {
     "domain": "localhost"
@@ -73,8 +77,8 @@ const cookieConfig:NgcCookieConsentConfig = {
     AppRoutingModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
     NoopAnimationsModule,
     AuthModule,
   ],

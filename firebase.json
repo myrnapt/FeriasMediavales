@@ -1,13 +1,6 @@
 {
   "firestore": {
-    "rules": "2",
-    "indexes": "firebase init"
-  },
-  "hosting": [
-    {
-      "target": "FeriasMediavales",
-      "source": ".",
-      "frameworksBackend": {}
-    }
-  ]
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
 }

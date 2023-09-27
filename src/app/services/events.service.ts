@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, getDocs } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Events } from '../interfaces/events.interface';
 
@@ -9,21 +9,17 @@ import { Events } from '../interfaces/events.interface';
 })
 export class EventsService {
 
-
   constructor (private firestore: Firestore) {}
 
-
-  addPlace(place: Events){
-    const placeref = collection(this.firestore, 'mercados')
-    return addDoc(placeref, place)
+  addEvent(event: Events){
+    const eventRef = collection(this.firestore, 'mercados');
+    return addDoc(eventRef, event);
   }
 
-  getPlaces(): Observable<Events[]>{
-    const placeref = collection(this.firestore, 'mercados')
-    console.log(placeref);
-    return collectionData(placeref, { idField: 'id'}) as Observable <Events[]>
+  getEvents(): Observable<Events[]>{
+    const eventRef = collection(this.firestore, 'mercados');
+    console.log(eventRef, 'referencia para la lista de eventos');
+    return collectionData(eventRef, { idField: 'id'}) as Observable <Events[]>;
   }
-
-
 
 }

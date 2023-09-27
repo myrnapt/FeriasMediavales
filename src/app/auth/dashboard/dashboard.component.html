@@ -8,17 +8,14 @@
   <div class="row">
     <div class="col-md-12 col-lg-6">EVENTOS PENDIENTES</div>
 
-    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-          <label for="name" class="text-dark">PLACE</label>
-          <input class="form-control " formControlName="name" type="text" />
-      </div> 
+    <form class="form" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name" class="text-dark form-label">Name</label>
+        <input class="form-control " formControlName="name" type="text" />
+      </div>
       <button type="submit">OK</button>
     </form>
 
     <div class="col-md-12 col-lg-6">EVENTOS CONFIRMADOS</div>
-    <div *ngFor="let event of eventList">
-      {{ event.name }}
-    </div>
   </div>
 </div>
