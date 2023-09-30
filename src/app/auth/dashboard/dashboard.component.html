@@ -1,20 +1,46 @@
 <div class="container">
-  <button class="btn btn-secondary" (click)="logout()">Log out</button>
-  <h1>Panel administrador</h1>
   <div class="row">
-    <div class="col-md-12 col-lg-6">Nuevo evento</div>
-    <div class="col-md-12 col-lg-6">Buscador</div>
+    <div class="col-6"><h1>Panel administrador</h1></div>
+    <div class="col-6">
+      <button class="btn btn-dark float-end" (click)="logout()">Log out</button>
+    </div>
   </div>
+
   <div class="row">
-    <div class="col-md-12 col-lg-6">EVENTOS PENDIENTES</div>
-    <div>
-      <input id="name" [(ngModel)]="eventName"> <!-- Use ngModel to bind to a component property -->
-      <button (click)="addEvent()">OK</button>
+    <div class="card">
+      <div class="card-body">
+        <span class="fw-bold h3"> EVENTOS PENDIENTES </span>
+        <button class="btn btn-secondary float-end" (click)="redirigirARuta()">
+          NUEVO
+        </button>
+        <!-- <input id="name" [(ngModel)]="eventName"> -->
+        <table class="table table-hover mt-3">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Ubicación</th>
+              <th scope="col">Fecha</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let evento of events">
+            <tr>
+              <td>{{ evento.name }}</td>
+              <td>ejemplo</td>
+              <td>ejemplo</td>
+              <td >
+                <i class="fa-regular fa-pen-to-square text-primary" type="button"> Editar </i>
+              </td>
+              <td>
+                <i class="fa-regular fa-trash-can text-danger" type="button" (click)="deleteEvent(evento.id)"> Borrar </i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="col-md-12 col-lg-6">EVENTOS CONFIRMADOS</div>
-    <div *ngFor="let evento of events">
-      {{ evento.name }}
-      <button (click)="deleteEvent(evento.id)">X</button>
-    </div>
+    <div></div>
   </div>
 </div>

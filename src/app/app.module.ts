@@ -1,32 +1,35 @@
 //MODULES
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
-import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
+import { AuthModule } from './auth/auth.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
+import { NgModule } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
+import { ToastrModule } from 'ngx-toastr';
 
 //COMPONENTS
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './pages/home/header/header.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { OrganizerComponent } from './pages/organizers/organizer/organizer.component';
-import { HomeComponent } from './pages/home/home.component';
-import { SearchbarComponent } from './pages/home/header/searchbar/searchbar.component';
-import { EventPreviewsComponent } from './pages/home/event-previews/event-previews.component';
-import { FaqComponent } from './pages/home/faq/faq.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { FairsComponent } from './pages/fairs/fairs.component';
 import { ErrorPageComponent } from './pages/errorPage/errorPage.component';
+import { EventPreviewsComponent } from './pages/home/event-previews/event-previews.component';
+import { FairsComponent } from './pages/fairs/fairs.component';
+import { FaqComponent } from './pages/home/faq/faq.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { HeaderComponent } from './pages/home/header/header.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { OrganizerComponent } from './pages/organizers/organizer/organizer.component';
+import { SearchbarComponent } from './pages/home/header/searchbar/searchbar.component';
 
 //DATABASE
+import { environment } from 'src/environments/environment';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { NewEventFormComponent } from './pages/contact/new-event-form/new-event-form.component';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { environment } from 'src/environments/environment';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 //COOKIES CONFIGURATION
 const cookieConfig:NgcCookieConsentConfig = {
@@ -61,30 +64,33 @@ const cookieConfig:NgcCookieConsentConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    NavbarComponent,
-    FooterComponent,
-    OrganizerComponent,
-    HomeComponent,
-    SearchbarComponent,
-    EventPreviewsComponent,
-    FaqComponent,
     ContactComponent,
-    FairsComponent,
     ErrorPageComponent,
+    EventPreviewsComponent,
+    FairsComponent,
+    FaqComponent,
+    FooterComponent,
+    HeaderComponent,
+    HomeComponent,
+    NavbarComponent,
+    NewEventFormComponent,
+    OrganizerComponent,
+    SearchbarComponent,
     
   ],
   imports: [
-    FormsModule,
-    BrowserModule,
     AppRoutingModule,
+    AuthModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    HttpClientModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
+    NoopAnimationsModule,
+    provideAuth(() => getAuth()),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth()),
-    NoopAnimationsModule,
-    AuthModule,
-    HttpClientModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,6 +8,7 @@ import { ErrorPageComponent } from './pages/errorPage/errorPage.component';
 import { AuthGuard, canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './auth/dashboard/dashboard.component';
+import { NewEventFormComponent } from './pages/contact/new-event-form/new-event-form.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
@@ -20,7 +21,7 @@ const routes: Routes = [
     component: OrganizerComponent
   },
   { 
-    path: 'home',
+    path: '',
     component: HomeComponent
   },
   { 
@@ -36,6 +37,10 @@ const routes: Routes = [
     component: ErrorPageComponent,
   },
   { 
+    path: 'formulario',
+    component: NewEventFormComponent,
+  },
+  { 
     path: 'login',
     component: LoginComponent,
     canActivate: [AuthGuard],
@@ -46,7 +51,7 @@ const routes: Routes = [
     component: DashboardComponent,
     ...canActivate(()=> redirectUnauthorizedTo(['/login']))
   },
-  { path: '', pathMatch: 'full', redirectTo: 'home'}
+  { path: '**', pathMatch: 'full', redirectTo: ''}
  
 ];
 

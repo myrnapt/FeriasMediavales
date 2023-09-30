@@ -54,4 +54,8 @@ export class DashboardComponent implements OnInit  {
       this.refreshNotes();
     })
   }
+
+  redirigirARuta() {
+    this.router.navigate(['/formulario']);
+  }
 }
