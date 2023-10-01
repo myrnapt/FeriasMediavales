@@ -48,8 +48,10 @@ export class NewEventFormComponent {
       image: this.eventForm.get('imagen')?.value,
     }
     console.log(EVENT);
-    this.toastr.success('El formulario ha sido enviado correctamente','Formulario enviado!');
-    this.eventForm.reset()
+    this.eventsService.createEvent(EVENT).subscribe( data => {
+      this.toastr.success('El formulario ha sido enviado correctamente','Formulario enviado!');
+      this.eventForm.reset()
+    }, error => console.log(error))
 
     // if (this.eventForm.valid) {
     //   const formData = this.eventForm.value;

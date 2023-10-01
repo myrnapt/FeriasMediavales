@@ -9,18 +9,21 @@ import { Observable } from 'rxjs';
 })
 export class EventsService {
 
-  private apiUrl = 'http://localhost:5038/api/mercados-mediavales'; // Reemplaza con la URL de tu API
+  private apiUrl = 'http://localhost:5038/api/mercados-mediavales/'; // Reemplaza con la URL de tu API
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient) {}
 
-  addEvent(event: Events): Observable<any> {
-    const endpoint = `${this.apiUrl}/add-mercados`;
-    return this.http.post(endpoint, event);
+  getEventos(): Observable<any> {
+    return this.http.get(this.apiUrl)
   }
 
-  getEvents(): Observable<Events[]> {
-    const endpoint = `${this.apiUrl}/get-mercados`;
-    return this.http.get<Events[]>(endpoint);
+  deleteEvent(id: any): Observable<any> {
+    return this.http.delete(this.apiUrl + id )
+  }
+
+  createEvent(event: Events): Observable<any> {
+    return this.http.post(this.apiUrl, event)
   }
 
 

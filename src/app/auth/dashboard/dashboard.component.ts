@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Events } from 'src/app/interfaces/events.interface';
 import { AuthService } from 'src/app/services/auth.service';
+import { EventsService } from 'src/app/services/events.service';
 
 @Component({
   selector: 'auth-dashboard',
@@ -12,14 +13,40 @@ import { AuthService } from 'src/app/services/auth.service';
 export class DashboardComponent implements OnInit  {
   
   readonly APIUrl = "http://localhost:5038/api/mercados-mediavales/"
-  eventName: string = ''
+  LIST_EVENTS: Events[] = [];
 
   constructor(
-    private http: HttpClient,
+    private _eventService: EventsService,
     private authService: AuthService, 
-    private router: Router) 
+    private router: Router,
+    private toastr: ToastrService) 
     {}
  
+  getEvents() {
+    this._eventService.getEventos().subscribe( data => {
+      console.log(data);
+      this.LIST_EVENTS = data
+    }), error => {
+      console.log(error);
+    }
+  }
+
+
+
+  deleteEvent(id: any) {
+    this._eventService.deleteEvent(id).subscribe({
+      next: (data) => {
+        this.toastr.error('El evento ha sido eliminado con éxito', 'Evento eliminado');
+        this.getEvents();
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      complete: () => {
+      }
+    });
+  }
+  
   logout() {
     if (!confirm('Seguro que quieres cerrar sesion?')) return;
     this.authService.logout()
@@ -27,35 +54,11 @@ export class DashboardComponent implements OnInit  {
       .catch((error) => console.log(error));
   }
 
-  events: any = [];
-
-  refreshNotes(){
-    this.http.get(this.APIUrl+'get-mercados').subscribe(data => {
-      this.events = data;
-    })
+  redirigirARuta() {
+    this.router.navigate(['/formulario']);
   }
 
   ngOnInit() {
-    this.refreshNotes();
-  }
-
-  addEvent() {
-    let newEvent = this.eventName; // Use the property here
-    let formData = new FormData();
-    console.log(newEvent + 'New event');
-    formData.append("name", newEvent);
-    this.http.post(this.APIUrl + 'add-mercados', formData).subscribe(data => {
-      this.refreshNotes(); console.log(data + 'data');
-    });
-  }
-
-  deleteEvent(id: any) {
-    this.http.delete(this.APIUrl+'delete-mercado?id'+id).subscribe( data => {
-      this.refreshNotes();
-    })
-  }
-
-  redirigirARuta() {
-    this.router.navigate(['/formulario']);
+    this.getEvents()
   }
 }

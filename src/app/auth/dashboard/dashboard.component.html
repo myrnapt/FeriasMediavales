@@ -24,16 +24,19 @@
               <th scope="col"></th>
             </tr>
           </thead>
-          <tbody *ngFor="let evento of events">
-            <tr>
-              <td>{{ evento.name }}</td>
-              <td>ejemplo</td>
-              <td>ejemplo</td>
-              <td >
-                <i class="fa-regular fa-pen-to-square text-primary" type="button"> Editar </i>
+          <tbody>
+            <tr *ngFor="let event of LIST_EVENTS">
+              <td> {{ event.name }} </td>
+              <td> {{ event.lat }} </td>
+              <td> {{ event.dataStart | date: 'shortDate' }} </td>
+              <td>
+                <i class="fa-regular fa-pen-to-square text-primary" 
+                type="button"> Editar </i>
               </td>
               <td>
-                <i class="fa-regular fa-trash-can text-danger" type="button" (click)="deleteEvent(evento.id)"> Borrar </i>
+                <button  class="btn" (click)="deleteEvent(event._id)">
+                  <i class=" fa-regular fa-trash-can text-danger" > Borrar </i>
+                </button>
               </td>
             </tr>
           </tbody>

@@ -1,8 +1,8 @@
 export interface Events {
     email: string;
     name: string;
-    dataStart: string;
-    dataEnd: string;
+    dataStart: Date;
+    dataEnd: Date;
     lat: number;
     lng: number;
     description: string;
@@ -10,5 +10,5 @@ export interface Events {
     telephone?: number;
     price?: number;
     image?: string;
-    _id?: number;
+    _id?: string;
 }

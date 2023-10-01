@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'pages-fairs',
   templateUrl: './fairs.component.html',
-  styleUrls: ['./fairs.component.css']
+  styleUrls: ['./fairs.component.scss']
 })
 export class FairsComponent implements OnInit {
 
