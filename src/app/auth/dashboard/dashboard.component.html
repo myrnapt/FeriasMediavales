@@ -7,43 +7,47 @@
   </div>
 
   <div class="row">
-    <div class="card">
-      <div class="card-body">
-        <span class="fw-bold h3"> EVENTOS PENDIENTES </span>
-        <button class="btn btn-secondary float-end" (click)="redirigirARuta()">
-          NUEVO
-        </button>
-        <!-- <input id="name" [(ngModel)]="eventName"> -->
-        <table class="table table-hover mt-3">
-          <thead>
-            <tr>
-              <th scope="col">Nombre</th>
-              <th scope="col">Ubicación</th>
-              <th scope="col">Fecha</th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let event of LIST_EVENTS">
-              <td> {{ event.name }} </td>
-              <td> {{ event.lat }} </td>
-              <td> {{ event.dataStart | date: 'shortDate' }} </td>
-              <td>
-                <i class="fa-regular fa-pen-to-square text-primary" 
-                type="button"> Editar </i>
-              </td>
-              <td>
-                <button  class="btn" (click)="deleteEvent(event._id)">
-                  <i class=" fa-regular fa-trash-can text-danger" > Borrar </i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="col-md-12 col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <span class="fw-bold h3"> EVENTOS PENDIENTES </span>
+          <button class="btn btn-secondary float-end" (click)="redirigirARuta()">
+            NUEVO
+          </button>
+          <!-- <input id="name" [(ngModel)]="eventName"> -->
+          <table class="table table-hover mt-3">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Ubicación</th>
+                <th scope="col">Fecha</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let event of LIST_EVENTS">
+                <td class="align-middle"> {{ event.name }} </td>
+                <td class="align-middle"> {{ event.lat }} </td>
+                <td class="align-middle"> {{ event.dataStart | date:'dd/MM/yyyy' }} </td>
+                <td>
+                  <button  class="btn" (click)="redirigirAFormulario(event._id)">
+                    <i class="fa-regular fa-pen-to-square text-primary" > Editar </i>
+                  </button>
+                </td>
+                <td>
+                  <button  class="btn" (click)="deleteEvent(event._id)">
+                    <i class=" fa-regular fa-trash-can text-danger" > Borrar </i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-    <div class="col-md-12 col-lg-6">EVENTOS CONFIRMADOS</div>
-    <div></div>
+      <div class="col-md-12 col-lg-6">EVENTOS CONFIRMADOS</div>
+      <div></div>
+    </div>
   </div>
-</div>
+  

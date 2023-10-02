@@ -40,6 +40,11 @@ const routes: Routes = [
     path: 'formulario',
     component: NewEventFormComponent,
   },
+  ,
+  { 
+    path: 'editar-formulario/:id',
+    component: NewEventFormComponent,
+  },
   { 
     path: 'login',
     component: LoginComponent,

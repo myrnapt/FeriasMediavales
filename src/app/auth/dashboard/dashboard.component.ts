@@ -25,26 +25,35 @@ export class DashboardComponent implements OnInit  {
   getEvents() {
     this._eventService.getEventos().subscribe( data => {
       console.log(data);
-      this.LIST_EVENTS = data
-    }), error => {
-      console.log(error);
-    }
+      this.LIST_EVENTS = data;
+    }, error => {
+      console.log(error)
+    })
   }
 
-
-
   deleteEvent(id: any) {
-    this._eventService.deleteEvent(id).subscribe({
-      next: (data) => {
-        this.toastr.error('El evento ha sido eliminado con éxito', 'Evento eliminado');
-        this.getEvents();
-      },
-      error: (error) => {
-        console.log(error);
-      },
-      complete: () => {
-      }
-    });
+    const confirmed = confirm('¿Seguro que quiere eliminar el evento?');
+    
+    if (confirmed) {
+      this._eventService.deleteEvent(id).subscribe({
+        next: (data) => {
+          this.toastr.error('El evento ha sido eliminado con éxito', 'Evento eliminado');
+          this.getEvents();
+        },
+        error: (error) => {
+          console.log(error);
+        },
+        complete: () => {
+        }
+      });
+    } else {
+      console.log('La eliminación del evento ha sido cancelada');
+    }
+  }
+  
+
+  modifyEvent(id: any){
+
   }
   
   logout() {
@@ -56,6 +65,11 @@ export class DashboardComponent implements OnInit  {
 
   redirigirARuta() {
     this.router.navigate(['/formulario']);
+  }
+
+  redirigirAFormulario(eventID: any) {
+    console.log('redirigir formulario');
+    this.router.navigate(['editar-formulario/' + eventID ]);
   }
 
   ngOnInit() {
