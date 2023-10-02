@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container mt-5">
+  <div class="text-center"><h1>Panel administrador</h1></div>
   <div class="row">
-    <div class="col-6"><h1>Panel administrador</h1></div>
-    <div class="col-6">
-      <button class="btn btn-dark float-end" (click)="logout()">Log out</button>
+    <div class="col-lg-1 offset-11">
+      <button class="btn btn-dark" (click)="logout()">Log out</button>
     </div>
   </div>
 
@@ -31,13 +31,14 @@
                 <td class="align-middle"> {{ event.lat }} </td>
                 <td class="align-middle"> {{ event.dataStart | date:'dd/MM/yyyy' }} </td>
                 <td>
-                  <button  class="btn" (click)="redirigirAFormulario(event._id)">
-                    <i class="fa-regular fa-pen-to-square text-primary" > Editar </i>
+                  <button class="btn" (click)="redirigirAFormulario(event._id)">
+                    <i class="fa-regular fa-pen-to-square text-primary"> Editar
+                    </i>
                   </button>
                 </td>
                 <td>
-                  <button  class="btn" (click)="deleteEvent(event._id)">
-                    <i class=" fa-regular fa-trash-can text-danger" > Borrar </i>
+                  <button class="btn" (click)="deleteEvent(event._id)">
+                    <i class=" fa-regular fa-trash-can text-danger"> Borrar </i>
                   </button>
                 </td>
               </tr>
@@ -46,8 +47,7 @@
         </div>
       </div>
     </div>
-      <div class="col-md-12 col-lg-6">EVENTOS CONFIRMADOS</div>
-      <div></div>
-    </div>
+    <div class="col-md-12 col-lg-6">EVENTOS CONFIRMADOS</div>
+    <div></div>
   </div>
-  
+</div>
