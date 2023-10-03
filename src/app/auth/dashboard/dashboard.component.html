@@ -28,7 +28,6 @@
             <tbody>
               <tr *ngFor="let event of LIST_EVENTS">
                 <td class="align-middle"> {{ event.name }} </td>
-                <td class="align-middle"> {{ event.lat }} </td>
                 <td class="align-middle"> {{ event.dataStart | date:'dd/MM/yyyy' }} </td>
                 <td>
                   <button class="btn" (click)="redirigirAFormulario(event._id)">

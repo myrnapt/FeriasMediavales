@@ -20,41 +20,37 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="dataStart">Fecha de Comienzo</label>
+    <div class="form-group row">
+      <div class="col-6">
+      <label for="dataStart">Fecha de inicio</label>
       <input type="date" class="form-control" id="dataStart"
         formControlName="dataStart">
         <div *ngIf="eventForm.get('dataStart')?.hasError('required') && (eventForm.get('dataStart').dirty || eventForm.get('dataStart').touched)" class="text-danger">
           Este campo es obligatorio
       </div>
-    </div>
-
-    <div class="form-group">
-      <label for="dataEnd">Fecha de Acabado</label>
-      <input type="date" class="form-control" id="dataEnd"
+      </div>
+      
+      <div class="col-6 ">
+        <label for="dataEnd">Fecha de finalización</label>
+        <input type="date" class="form-control" id="dataEnd"
         formControlName="dataEnd">
         <div *ngIf="eventForm.get('dataEnd')?.hasError('required') && (eventForm.get('dataEnd').dirty || eventForm.get('dataEnd').touched)" class="text-danger">
           Este campo es obligatorio
+        </div>
       </div>
     </div>
-
+      
     <div class="form-group">
-      <label for="lat">Ubicación en Google Maps</label>
-      <input type="text" class="form-control" id="lat"
-        formControlName="lat">
+      <label for="busqueda">Ubicación</label>
+      <input type="text" class="form-control" id="inputPlaces"
+        formControlName="busqueda"
+        #inputPlaces>
         <div *ngIf="eventForm.get('lat')?.hasError('required') && (eventForm.get('lat').dirty || eventForm.get('lat').touched)" class="text-danger">
           Este campo es obligatorio
       </div>
+      <div class="mapa" #divMap> </div>
     </div>
 
-    <div class="form-group">
-      <label for="lng">Ubicación en Google Maps</label>
-      <input type="text" class="form-control" id="lng"
-        formControlName="lng">
-        <div *ngIf="eventForm.get('lng')?.hasError('required') && (eventForm.get('lng').dirty || eventForm.get('lng').touched)" class="text-danger">
-          Este campo es obligatorio
-      </div>
-    </div>
 
     <div class="form-group">
       <label for="description">Descripción</label>
@@ -75,12 +71,6 @@
       <label for="telephone">Número de Teléfono</label>
       <input type="number" class="form-control" id="telephone"
         formControlName="telephone">
-    </div>
-
-    <div class="form-group">
-      <label for="price"> Precio en €</label>
-      <input type="number" class="form-control" id="price"
-        formControlName="price">
     </div>
 
     <div class="form-group mt-3">

@@ -1,0 +1,19 @@
+
+.form-group {
+    margin-top: 2%;
+}
+.mapa {
+    margin-top: 2%;
+    width: 50%px;
+    height: 200px;
+    border-radius: 10px;
+    border: 1px solid rgb(211, 209, 207);
+}
+
+
+
+@media screen and (min-width: 1200px) {
+    .container{
+        width: 50vw;
+    }
+}
