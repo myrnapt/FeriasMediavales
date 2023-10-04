@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrganizerComponent } from './pages/organizers/organizer/organizer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { FairsComponent } from './pages/fairs/fairs.component';
@@ -16,10 +15,6 @@ const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
 
 
 const routes: Routes = [
-  { 
-    path: 'organizadores',
-    component: OrganizerComponent
-  },
   { 
     path: '',
     component: HomeComponent

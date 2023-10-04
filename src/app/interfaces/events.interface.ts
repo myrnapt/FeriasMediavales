@@ -4,7 +4,6 @@ export interface Events {
     dataStart: Date;
     dataEnd: Date;
     description: string;
-    organizer?: string;
     telephone?: number;
     image?: string;
     _id?: string;

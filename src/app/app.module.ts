@@ -20,7 +20,6 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './pages/home/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { OrganizerComponent } from './pages/organizers/organizer/organizer.component';
 import { SearchbarComponent } from './pages/home/header/searchbar/searchbar.component';
 
 //DATABASE
@@ -30,6 +29,8 @@ import { NewEventFormComponent } from './pages/contact/new-event-form/new-event-
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LocationFormComponent } from './pages/contact/new-event-form/location-form/location-form.component';
+import { CommonModule } from '@angular/common';
 
 //COOKIES CONFIGURATION
 const cookieConfig:NgcCookieConsentConfig = {
@@ -74,8 +75,8 @@ const cookieConfig:NgcCookieConsentConfig = {
     HomeComponent,
     NavbarComponent,
     NewEventFormComponent,
-    OrganizerComponent,
     SearchbarComponent,
+    LocationFormComponent,
     
   ],
   imports: [
@@ -83,6 +84,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     AuthModule,
     BrowserAnimationsModule,
     BrowserModule,
+    CommonModule,
     HttpClientModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
     NoopAnimationsModule,

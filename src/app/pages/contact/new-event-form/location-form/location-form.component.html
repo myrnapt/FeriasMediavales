@@ -1,0 +1,16 @@
+<div class="formulario">
+    <form [formGroup]="formMapas" (ngSubmit)="onSubmit()">
+      <label for="busqueda" class="mt-4"> Ubicación </label>
+      <input type="text" class="form-control" #inputPlaces id="inputPlaces" formControlName="busqueda">
+      <div class="mapa mt-4" #divMap></div>
+    </form>
+  </div>
+<!-- 
+  <div class="form-group">
+    <label for="name">Nombre del evento</label>
+    <input type="text" class="form-control" id="name"
+      formControlName="name">
+      <div *ngIf="eventForm.get('name')?.hasError('required') && (eventForm.get('name').dirty || eventForm.get('name').touched)" class="text-danger">
+        Este campo es obligatorio
+      </div>
+  </div> -->
