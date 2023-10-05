@@ -123,6 +123,10 @@ export class LocationFormComponent {
     );
   }
 
+  resetFormData() {
+    this.formMapas.reset()
+  }
+
   cargarMapa(position: any): any {
     const opciones = {
       center: new google.maps.LatLng(

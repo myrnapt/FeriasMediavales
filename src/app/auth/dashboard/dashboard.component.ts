@@ -14,6 +14,8 @@ export class DashboardComponent implements OnInit  {
   
   readonly APIUrl = "http://localhost:5038/api/mercados-mediavales/"
   LIST_EVENTS: Events[] = [];
+  selectedEvent: Events | null = null;
+
 
   constructor(
     private _eventService: EventsService,
@@ -51,10 +53,6 @@ export class DashboardComponent implements OnInit  {
     }
   }
   
-
-  modifyEvent(id: any){
-
-  }
   
   logout() {
     if (!confirm('Seguro que quieres cerrar sesion?')) return;
@@ -68,11 +66,15 @@ export class DashboardComponent implements OnInit  {
   }
 
   redirigirAFormulario(eventID: any) {
-    console.log('redirigir formulario');
-    this.router.navigate(['editar-formulario/' + eventID ]);
+    this.selectedEvent = this.LIST_EVENTS.find(event => event._id === eventID);
+    this.router.navigate(['editar-formulario/' + eventID]);
   }
 
   ngOnInit() {
     this.getEvents()
+  }
+
+  modifyEvent(id: string) {
+    
   }
 }

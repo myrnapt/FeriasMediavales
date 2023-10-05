@@ -18,7 +18,7 @@ export class EventsService {
     return this.http.get(this.apiUrl)
   }
 
-  deleteEvent(id: any): Observable<any> {
+  deleteEvent(id: string): Observable<any> {
     return this.http.delete(this.apiUrl + id )
   }
 
@@ -26,13 +26,12 @@ export class EventsService {
     return this.http.post(this.apiUrl, event)
   }
 
-  getEvent(id: any): Observable<any> {
+  getEvent(id: string): Observable<any> {
     return this.http.get(this.apiUrl + id )
   }
 
   modifyEvent(id: any, event: Events): Observable<any> {
     return this.http.put(this.apiUrl + id, event)
   }
-
 
 }

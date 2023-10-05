@@ -30,7 +30,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LocationFormComponent } from './pages/contact/new-event-form/location-form/location-form.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 //COOKIES CONFIGURATION
 const cookieConfig:NgcCookieConsentConfig = {
@@ -94,7 +94,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     ReactiveFormsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

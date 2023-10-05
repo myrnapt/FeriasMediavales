@@ -1,11 +1,12 @@
 
-import { Component, OnInit,  ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Events } from 'src/app/interfaces/events.interface';
 import { EventsService } from 'src/app/services/events.service';
 import { LocationFormComponent } from './location-form/location-form.component';
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'pages-contact-new-event-form',
@@ -16,7 +17,7 @@ export class NewEventFormComponent implements OnInit {
 
   @ViewChild(LocationFormComponent) locationFormComponent: LocationFormComponent; // Add this line
 
-
+  selectedEvent: Events | null = null;
   eventForm: FormGroup;
   title: string = "Formulario del evento"
   id: string;
@@ -28,6 +29,7 @@ export class NewEventFormComponent implements OnInit {
     private toastr: ToastrService,
     private activatedRouter: ActivatedRoute,
     private router: Router,
+    private datePipe: DatePipe,
   ) {
     this.eventForm = this.formBuilder.group({
       name: ['', Validators.required,],
@@ -37,26 +39,28 @@ export class NewEventFormComponent implements OnInit {
       description: ['', Validators.required],
       telephone: [''],
       image: [''],
+      direccion: [''],
+      provincia: [''],
+      region: [''],
     })
     this.id = this.activatedRouter.snapshot.paramMap.get('id');
   }
 
   // SE CARGA AL ABRIR LA PAGINA
   ngOnInit(): void {
-    this.getEvent()
+    this.modifyEvent()
   }
 
   mergeFormValues() {
     const childFormValues = this.locationFormComponent.formMapas.value;
-  
     const mergedData = {
       ...this.eventForm.value,
       ...childFormValues
     };
-  
+
     console.log("Merged Form Data: ", mergedData);
   }
-  
+
 
   //ENVIAMOS EL FORMULARIO Y LO VALIDAMOS
   onSubmit() {
@@ -88,17 +92,19 @@ export class NewEventFormComponent implements OnInit {
     } else { this.eventForm.markAllAsTouched(), console.log('form error'); }
   }
 
-
   // MODIFICAR EL EVENTO
-  getEvent() {
+  modifyEvent() {
     if (this.id !== null) {
       this.title = "Editar evento";
       this.eventsService.getEvent(this.id).subscribe(data => {
-        this.eventForm.setValue({
+        console.log(data, '1');
+        const formattedStartDate = this.datePipe.transform(data.dataStart, 'yyyy-MM-dd');
+        const formattedEndDate = this.datePipe.transform(data.dataEnd, 'yyyy-MM-dd');
+        this.eventForm.patchValue({
           name: data.name,
           email: data.email,
-          dataStart: data.StartDate,
-          dataEnd: data.EndDate,
+          dataStart: data.formattedStartDate,
+          dataEnd: data.formattedEndDate,
           description: data.description,
           telephone: data.telephone,
           image: data.image,

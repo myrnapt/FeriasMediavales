@@ -7,4 +7,8 @@ export interface Events {
     telephone?: number;
     image?: string;
     _id?: string;
-}
+    direccion?: string;
+    provincia?: string;
+    region?: string;
+  }
+  

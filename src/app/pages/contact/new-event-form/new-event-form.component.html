@@ -15,8 +15,11 @@
       <label for="email">Email</label>
       <input type="email" class="form-control" id="email"
         formControlName="email">
-        <div *ngIf="eventForm.get('email')?.hasError('required') && (eventForm.get('email').dirty || eventForm.get('email').touched)" class="text-danger">
-          Este campo es obligatorio
+      <div
+        *ngIf="eventForm.controls['email'].invalid && (eventForm.controls['email'].dirty || eventForm.controls['email'].touched)"
+        class="text-danger">
+        <div *ngIf="eventForm.controls['email'].errors?.[' ']"> Este campo es obligatorio </div>
+        <div *ngIf="eventForm.controls['email'].errors?.['email']"> Por favor introduzca un formato de email valido </div>
       </div>
     </div>
 
