@@ -1,6 +1,6 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Events } from 'src/app/interfaces/events.interface';
@@ -40,6 +40,7 @@ export class NewEventFormComponent implements OnInit {
       telephone: [''],
       image: [''],
       direccion: [''],
+      busquedad: [''],
       provincia: [''],
       region: [''],
     })
@@ -50,31 +51,34 @@ export class NewEventFormComponent implements OnInit {
   ngOnInit(): void {
     this.modifyEvent()
   }
-
+  mergedData: Events
   mergeFormValues() {
     const childFormValues = this.locationFormComponent.formMapas.value;
-    const mergedData = {
+    this.mergedData = {
       ...this.eventForm.value,
       ...childFormValues
     };
 
-    console.log("Merged Form Data: ", mergedData);
   }
 
-
   //ENVIAMOS EL FORMULARIO Y LO VALIDAMOS
+  
   onSubmit() {
     this.mergeFormValues();
 
     if (this.eventForm.valid) {
       const EVENT: Events = {
-        name: this.eventForm.get('name').value,
-        email: this.eventForm.get('email').value,
-        dataStart: this.eventForm.get('dataStart').value,
-        dataEnd: this.eventForm.get('dataEnd').value,
-        description: this.eventForm.get('description').value,
-        telephone: this.eventForm.get('telephone')?.value,
-        image: this.eventForm.get('image')?.value,
+        name: this.mergedData.name,
+        email: this.mergedData.email,
+        dataStart: this.mergedData.dataStart,
+        dataEnd: this.mergedData.dataEnd,
+        direccion: this.mergedData.direccion,
+        busqueda: this.mergedData.busqueda,
+        region: this.mergedData.region,
+        provincia: this.mergedData.provincia,
+        description: this.mergedData.description,
+        telephone: this.mergedData.telephone,
+        image: this.mergedData.image,
       }
       if (this.id !== null) {
         this.eventsService.modifyEvent(this.id, EVENT).subscribe(data => {
@@ -97,18 +101,19 @@ export class NewEventFormComponent implements OnInit {
     if (this.id !== null) {
       this.title = "Editar evento";
       this.eventsService.getEvent(this.id).subscribe(data => {
-        console.log(data, '1');
+        console.log(data, 'modificar')
         const formattedStartDate = this.datePipe.transform(data.dataStart, 'yyyy-MM-dd');
         const formattedEndDate = this.datePipe.transform(data.dataEnd, 'yyyy-MM-dd');
-        this.eventForm.patchValue({
-          name: data.name,
-          email: data.email,
-          dataStart: data.formattedStartDate,
-          dataEnd: data.formattedEndDate,
-          description: data.description,
-          telephone: data.telephone,
-          image: data.image,
-        })
+        this.locationFormComponent.formMapas.controls['busqueda'].setValue(data.direccion + ',' + data.region + ',' + data.provincia),
+          this.eventForm.patchValue({
+            name: data.name,
+            email: data.email,
+            dataStart: formattedStartDate,
+            dataEnd: formattedEndDate,
+            description: data.description,
+            telephone: data.telephone,
+            image: data.image,
+          })
       })
     }
   }

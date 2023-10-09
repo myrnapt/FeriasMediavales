@@ -5,19 +5,16 @@
             <div class="form-group">
                 <label for="email" class="text-dark">EMAIL</label>
                 <input class="form-control " formControlName="email" type="text" id="email" required />
-                <!-- <div *ngIf="email?.hasError('required')" class="text-primary">
-                    El email es obligatorio
+                  </div>
+                  <div *ngIf="form.get('email')?.hasError('required') && (form.get('email').dirty || form.get('email').touched)" class="text-primary">
+                    Este campo es obligatorio
                 </div>
-                <div *ngIf="email?.hasError('email')" class="text-primary">
-                    El email no es válido
-                </div> -->
-            </div>
             <div class="form-group">
                 <label for="password" class="text-dark mt-3 text-start"> CONTRASEÑA </label>
                 <input class="form-control" formControlName="password" type="password" id="password" required />
-                <!-- <div *ngIf="password?.hasError('required')" class="text-primary ">
-                    La contraseña es obligatoria
-                </div> -->
+                <div *ngIf="form.get('password')?.hasError('required') && (form.get('password').dirty || form.get('password').touched)" class="text-primary">
+                    Este campo es obligatorio
+                </div>
             </div>
             <div class="form-footer">
                 <button  class="btn" type="submit">

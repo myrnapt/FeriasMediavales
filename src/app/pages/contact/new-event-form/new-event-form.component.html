@@ -31,6 +31,10 @@
         <div *ngIf="eventForm.get('dataStart')?.hasError('required') && (eventForm.get('dataStart').dirty || eventForm.get('dataStart').touched)" class="text-danger">
           Este campo es obligatorio
       </div>
+      <div *ngIf="eventForm.get('dataStart')?.hasError('startDateInvalid')" class="text-danger">
+        La fecha de inicio no puede ser anterior a la fecha actual.
+      </div>
+      
       </div>
       
       <div class="col-6 ">

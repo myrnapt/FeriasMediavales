@@ -73,8 +73,6 @@ export class LocationFormComponent {
 
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
       const place: any = autocomplete.getPlace();
-      console.log('el place completo es:', place);
-
       this.mapa.setCenter(place.geometry.location);
       const marker = new google.maps.Marker({
         position: place.geometry.location,
@@ -95,7 +93,6 @@ export class LocationFormComponent {
       administrative_area_level_3: 'long_name',
       country: 'long_name',
     };
-
     const getAddressComp = (type: any) => {
       for (const component of place.address_components) {
         if (component.types[0] === type) {
@@ -104,7 +101,6 @@ export class LocationFormComponent {
       }
       return ' ';
     };
-
     const componentForm = {
       direccion: 'location',
       ciudad: 'administrative_area_level_3',
@@ -112,15 +108,21 @@ export class LocationFormComponent {
       region: 'administrative_area_level_1',
     };
 
+    
     Object.entries(componentForm).forEach((entry) => {
       const [key, value] = entry;
-
+      
       this.formMapas.controls[key].setValue(getAddressComp(value));
     });
-
+    
     this.formMapas.controls['direccion'].setValue(
       getAddressComp('route') + ' ' + getAddressComp('street_number')
-    );
+      );
+      
+    const direccionString =  this.formMapas.controls['direccion'].setValue(
+      getAddressComp('route') + ' ' + getAddressComp('street_number')
+      );
+
   }
 
   resetFormData() {
@@ -144,27 +146,11 @@ export class LocationFormComponent {
 
     const markerPosition = new google.maps.Marker({
       position: this.mapa.getCenter(),
-      title: 'David',
+      title: 'Ejemplo',
     });
 
     markerPosition.setMap(this.mapa);
     this.markers.push(markerPosition);
 
-    google.maps.event.addListener(
-      this.mapa,
-      'click',
-      (evento: google.maps.MapMouseEvent) => {
-        const marker = new google.maps.Marker({
-          position: evento.latLng,
-          animation: google.maps.Animation.DROP,
-        });
-        marker.setDraggable(true);
-        marker.setMap(this.mapa);
-
-        google.maps.event.addListener(marker, 'click', (event) => {
-          marker.setMap(null);
-        });
-      }
-    );
   }
 }

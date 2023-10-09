@@ -1,7 +1,8 @@
 <footer class="text-center bg-light">
   <div class="container-fluid">
     <section>
-      <form action>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
         <div class="row">
           <div class="col-md-12 col-lg-4">
             <p class="pt-2 text-lg-end">
@@ -11,10 +12,15 @@
 
           <div class="col-md-12 col-lg-4">
             <div class="form mb-4">
-              <input type="email" id="form5Example2" class="form-control"
-                placeholder="email@ejemplo.com" />
-            </div>
+              <input type="email"  class="form-control"
+                placeholder="email@ejemplo.com" formControlName="email"/>
+                <div
+                *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)"
+                class="text-danger">
+                <div *ngIf="form.controls['email'].errors?.['email']"> Por favor introduzca un formato de email valido </div>
+              </div>
           </div>
+        </div>
 
           <div class="col-md-12 col-lg-4 text-lg-start">
             <button type="submit" class="btn btn-secondary mb-4">

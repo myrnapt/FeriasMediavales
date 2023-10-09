@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'auth-login',
@@ -14,17 +15,24 @@ export class LoginComponent{
   constructor(
     private authService: AuthService,
     private router: Router,
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService,
   ) {
-    this.form = new FormGroup({
-      email: new FormControl(),
-      password: new FormControl(),
+    this.form = this.formBuilder.group({
+      email: ['', Validators.required, Validators.email],
+      password: ['', Validators.required,],
     });
   }
 
   onSubmit() {
-    this.authService.login(this.form.value)
-    .then(() => this.router.navigate(['/dashboard']))
-    .catch(error => console.log(error));
+    if (this.form.valid) {
+      this.authService.login(this.form.value)
+      .then(() => this.router.navigate(['/dashboard']))
+      .catch(error => console.log(error));
+    } else { 
+      this.form.markAllAsTouched(),
+      this.toastr.error('Email o contraseña incorrectos', 'Error del formulario');
+    }
   }
 
 }
