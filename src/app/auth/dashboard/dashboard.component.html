@@ -1,52 +1,57 @@
 <div class="container mt-5">
-  <div class="text-center"><h1>Panel administrador</h1></div>
-  <div class="row">
-    <div class="col-lg-1 offset-11">
-      <button class="btn btn-dark" (click)="logout()">Log out</button>
+  <div class="row mx-auto">
+    <div class="col-lg-10 mx-auto">
+      <h1>Panel administrador</h1>
+      <button class="btn btn-dark mb-3 " (click)="logout()">Log out</button>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-12 col-lg-6">
+    <div class="col-lg-10 mx-auto">
       <div class="card">
         <div class="card-body">
           <span class="fw-bold h3"> EVENTOS PENDIENTES </span>
           <button class="btn btn-secondary float-end" (click)="redirigirARuta()">
             NUEVO
           </button>
-          <!-- <input id="name" [(ngModel)]="eventName"> -->
           <table class="table table-hover mt-3">
             <thead>
               <tr>
                 <th scope="col">Nombre</th>
+                <th scope="col" class="d-none d-md-table-cell">Fecha</th>
                 <th scope="col">Ubicación</th>
-                <th scope="col">Fecha</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
+                <th scope="col">Editar</th>
+                <th scope="col">Borrar</th>
+                <th scope="col" formControlName="isPublished">Publicar</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let event of LIST_EVENTS">
-                <td class="align-middle"> {{ event.name }} </td>
-                <td class="align-middle"> {{ event.dataStart | date:'dd/MM/yyyy' }} </td>
-                <td>
+              <tr *ngFor="let event of LIST_EVENTS" >
+                <td class="align-middle" [ngClass]="{'bg-info': !event.isPublished, 'bg-white': event.isPublished}"> {{ event.name }} </td>
+                <td class="align-middle d-none d-md-table-cell" [ngClass]="{'bg-info': !event.isPublished, 'bg-white': event.isPublished}"> {{ event.dataStart | date:'dd/MM/yyyy' }} </td>
+                <td class="align-middle" [ngClass]="{'bg-info': !event.isPublished, 'bg-white': event.isPublished}"> {{ event.direccion + ', ' + event.region }} </td>
+                <td [ngClass]="{'bg-info': !event.isPublished, 'bg-white': event.isPublished}">
                   <button class="btn" (click)="redirigirAFormulario(event._id)">
                     <i class="fa-regular fa-pen-to-square text-primary"> Editar
                     </i>
                   </button>
                 </td>
-                <td>
+                <td [ngClass]="{'bg-info': !event.isPublished, 'bg-white': event.isPublished}">
                   <button class="btn" (click)="deleteEvent(event._id)">
-                    <i class=" fa-regular fa-trash-can text-danger"> Borrar </i>
+                    <i class=" fa-regular fa-trash-can text-info"> Borrar </i>
                   </button>
                 </td>
+                <td [ngClass]="{'bg-info': !event.isPublished, 'bg-white': event.isPublished}">
+                  <button class="btn" (click)="publishEvent(event._id)">
+                    <i class="fa-solid fa-circle-arrow-up text-success"> Publicar </i>
+                  </button>
+                </td>
+                
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-    <div class="col-md-12 col-lg-6">EVENTOS CONFIRMADOS</div>
-    <div></div>
   </div>
 </div>

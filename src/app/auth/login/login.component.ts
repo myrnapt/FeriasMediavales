@@ -25,14 +25,10 @@ export class LoginComponent{
   }
 
   onSubmit() {
-    if (this.form.valid) {
       this.authService.login(this.form.value)
       .then(() => this.router.navigate(['/dashboard']))
       .catch(error => console.log(error));
-    } else { 
-      this.form.markAllAsTouched(),
-      this.toastr.error('Email o contraseña incorrectos', 'Error del formulario');
-    }
+ 
   }
 
 }

@@ -38,6 +38,7 @@ export class NewEventFormComponent implements OnInit {
       dataEnd: ['', Validators.required],
       description: ['', Validators.required],
       telephone: [''],
+      isPublished: [false],
       image: [''],
       direccion: [''],
       busquedad: [''],
@@ -79,6 +80,7 @@ export class NewEventFormComponent implements OnInit {
         description: this.mergedData.description,
         telephone: this.mergedData.telephone,
         image: this.mergedData.image,
+        isPublished: this.mergedData.isPublished,
       }
       if (this.id !== null) {
         this.eventsService.modifyEvent(this.id, EVENT).subscribe(data => {
@@ -118,4 +120,6 @@ export class NewEventFormComponent implements OnInit {
     }
   }
 
+  
+  
 }

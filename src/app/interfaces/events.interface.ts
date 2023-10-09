@@ -11,5 +11,6 @@ export interface Events {
     direccion?: string;
     provincia?: string;
     region?: string;
+    isPublished: boolean;
   }
   

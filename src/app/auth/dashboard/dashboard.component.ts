@@ -16,21 +16,20 @@ export class DashboardComponent implements OnInit  {
   LIST_EVENTS: Events[] = [];
   selectedEvent: Events | null = null;
 
-
   constructor(
     private _eventService: EventsService,
     private authService: AuthService, 
     private router: Router,
-    private toastr: ToastrService) 
-    {}
- 
+    private toastr: ToastrService
+  ) {}
+
   getEvents() {
-    this._eventService.getEventos().subscribe( data => {
+    this._eventService.getEventos().subscribe(data => {
       console.log(data);
       this.LIST_EVENTS = data;
     }, error => {
-      console.log(error)
-    })
+      console.log(error);
+    });
   }
 
   deleteEvent(id: any) {
@@ -53,9 +52,8 @@ export class DashboardComponent implements OnInit  {
     }
   }
   
-  
   logout() {
-    if (!confirm('Seguro que quieres cerrar sesion?')) return;
+    if (!confirm('Seguro que quieres cerrar sesión?')) return;
     this.authService.logout()
       .then(() => this.router.navigate(['/login']))
       .catch((error) => console.log(error));
@@ -71,10 +69,32 @@ export class DashboardComponent implements OnInit  {
   }
 
   ngOnInit() {
-    this.getEvents()
+    this.getEvents();
   }
 
   modifyEvent(id: string) {
-    
+    // Tu lógica para modificar eventos
   }
+
+publishEvent(eventID: string) {
+  const selectedEvent = this.LIST_EVENTS.find((event) => event._id === eventID);
+  const confirmed = confirm('¿Seguro que quieres publicar este evento?');
+  
+  if (confirmed) {
+    this._eventService.publishEvent(eventID, true).subscribe({
+      next: (data) => {
+        this.toastr.success('El evento ha sido publicado con éxito', 'Evento publicado');
+        selectedEvent.isPublished = true;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      complete: () => {}
+    });
+  } else {
+    console.log('La publicación del evento ha sido cancelada');
+  }
+}
+
+  
 }
