@@ -19,16 +19,21 @@ export class LoginComponent{
     private toastr: ToastrService,
   ) {
     this.form = this.formBuilder.group({
-      email: ['', Validators.required, Validators.email],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required,],
     });
   }
 
   onSubmit() {
+
+    if (this.form.valid) {
       this.authService.login(this.form.value)
       .then(() => this.router.navigate(['/dashboard']))
       .catch(error => console.log(error));
- 
+    } else { 
+      this.form.markAllAsTouched();
+      this.toastr.error('Usuario o contraseña incorrectos', 'Error de login')
+     }
   }
 
 }

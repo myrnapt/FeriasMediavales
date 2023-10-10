@@ -1,0 +1,24 @@
+body {
+    width: 60vw;
+    margin: 0 auto;
+    padding: 5%;
+    margin-bottom: 7%;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+a {
+    color:rgb(24, 91, 225)
+}
+@media (max-width: 1200px) {
+    body {
+        width: 80vw;
+        margin: 0 auto;
+        padding: 5%;
+        margin-bottom: 7%;
+    }
+
+
+}

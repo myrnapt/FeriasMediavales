@@ -24,14 +24,19 @@ export class DashboardComponent implements OnInit  {
   ) {}
 
   getEvents() {
-    this._eventService.getEventos().subscribe(data => {
-      console.log(data);
-      this.LIST_EVENTS = data;
-    }, error => {
-      console.log(error);
-    });
+    this._eventService.getEventos().subscribe(
+      (data) => {
+        console.log(data);
+        this.LIST_EVENTS = data.sort((a, b) => {
+          return new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime();
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
-
+  
   deleteEvent(id: any) {
     const confirmed = confirm('¿Seguro que quiere eliminar el evento?');
     

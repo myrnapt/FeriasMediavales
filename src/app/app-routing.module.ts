@@ -8,6 +8,7 @@ import { AuthGuard, canActivate, redirectLoggedInTo, redirectUnauthorizedTo } fr
 import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './auth/dashboard/dashboard.component';
 import { NewEventFormComponent } from './pages/contact/new-event-form/new-event-form.component';
+import { FaqComponent } from './pages/home/faq/faq.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
@@ -22,6 +23,10 @@ const routes: Routes = [
   { 
     path: 'contacto',
     component: ContactComponent
+  },
+  {
+    path: 'faq',
+    component: FaqComponent
   },
   { 
     path: 'mercados',

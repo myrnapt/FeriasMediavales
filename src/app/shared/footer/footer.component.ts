@@ -21,7 +21,8 @@ export class FooterComponent {
 
    onSubmit(){
     if (this.form.valid) {
-      this.toastr.success('Has sido subscrito al newsletter', '¡Exito!')
+      this.toastr.success('Has sido subscrito al newsletter', '¡Exito!');
+      this.form.reset()
     } else {
        this.form.markAllAsTouched() 
     }

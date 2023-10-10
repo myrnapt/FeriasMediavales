@@ -7,16 +7,14 @@
       </div>
     </div>
     <div class="row mt-4 mx-3">
-      <div class="col-xl-3 col-md-6  on-hover"  *ngFor="let item of arrayPrueba;" id="deck">
+      <div class="col-xl-3 col-md-6  on-hover"  *ngFor="let event of PUBLISHED_EVENTS;" id="deck">
         <div class="card border-0 mb-4">
-          <img class="card-img-top"
-              src="https://uning.es/wp-content/uploads/2016/08/ef3-placeholder-image.jpg"
-              alt="wrappixel kit">
+          <img class="card-img-top" [src]="event.image" >
           <div
-            class="date-pos bg-info-gradiant p-2 d-inline-block text-center rounded text-white position-absolute">Oct<span
-              class="d-block">23</span></div>
-          <h5 class="font-weight-medium m-3">{{item.titulo}}</h5>
-          <p class="m-3">{{item.ubicacion}}</p>
+            class="date-pos bg-info-gradiant p-2 d-inline-block text-center rounded text-white position-absolute"> {{event.dataStart | date: 'LLL' }} <span
+              class="d-block">{{event.dataStart | date: 'dd' }}</span></div>
+          <h5 class="font-weight-medium m-3"></h5>
+          <p class="m-3"> {{ event.name }}</p>
           <a href="#" class="text-decoration-none linking text-themecolor m-3"> Mas info </a>
         </div>
       </div>
