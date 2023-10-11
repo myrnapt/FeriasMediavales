@@ -67,7 +67,7 @@
     <div class="form-group mt-3">
       <label for="image">Subir el cartel: </label> <br>
       <input type="file" class="form-control-file" id="image"
-        formControlName="image">
+        formControlName="image" (change)="onFileSelect($event)">
     </div>
 
     <button type="submit" class="btn btn-secondary my-5">ENVIAR</button>
