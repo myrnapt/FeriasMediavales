@@ -1,0 +1,32 @@
+.card {
+    height: 95%;
+    padding: 5%;
+}
+
+form {
+    width: 20vw;
+    margin-right: auto!important;
+}
+
+.form-control::placeholder {
+    font-size: 1rem;
+    color: #aaa;
+    font-style: italic;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.form-control-underlined {
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    padding-left: 0;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+

@@ -18,13 +18,11 @@ constructor( private _eventService: EventsService) {}
 getEvents() {
   this._eventService.getEventos()
   .pipe(
-    finalize(()=> console.log(this.PUBLISHED_EVENTS, 'PIPE'))
+    finalize(()=> console.log())
   )
   .subscribe({
     next: (data) => { 
-      console.log(data);
       this.PUBLISHED_EVENTS = data;
-      console.log(this.PUBLISHED_EVENTS);
     },
     error: (error) => { console.log(error)}
   })

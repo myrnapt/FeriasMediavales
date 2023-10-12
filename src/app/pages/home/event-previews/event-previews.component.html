@@ -15,7 +15,7 @@
               class="d-block">{{event.dataStart | date: 'dd' }}</span></div>
           <h5 class="font-weight-medium m-3"></h5>
           <p class="m-3 h5 fw-bold"> {{ event.name | uppercase }}</p>
-          <p class="ms-3"> {{ event.region + ', ' + event.provincia | lowercase}}</p>
+          <p class="ms-3"> {{ event.region + ', ' + event.provincia | titlecase }}</p>
           <a href="#" class="text-decoration-none linking text-themecolor m-3 float"> Mas info </a>
         </div>
       </div>

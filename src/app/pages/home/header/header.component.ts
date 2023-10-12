@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  LIST_EVENTS: Event[] = []; // This is your event list
+
+  constructor() {}
+
+  ngOnInit() {
+    // Initialize your event list here or retrieve it from a service
+  }
+
+  onSearchResults(searchResults: Event[]) {
+    // This method is called when the search results are emitted from the child component
+    // Update your event list with the search results
+    this.LIST_EVENTS = searchResults;
+  }
 }

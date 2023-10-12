@@ -34,7 +34,7 @@
             <tbody>
               <tr *ngFor="let event of LIST_EVENTS">
 
-                <td class="align-middle" [ngClass]="{'bg-light ': !event.isPublished}"> {{ event.name }} </td>
+                <td class="align-middle" [ngClass]="{'bg-light ': !event.isPublished}"> {{ event.name | titlecase }}  </td>
 
                 <td class="align-middle d-none d-md-table-cell" [ngClass]="{'bg-light': !event.isPublished}"> {{ event.dataStart | date:'dd/MM/yyyy' }} </td>
                 

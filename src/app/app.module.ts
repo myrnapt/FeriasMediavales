@@ -28,7 +28,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { NewEventFormComponent } from './pages/contact/new-event-form/new-event-form.component';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocationFormComponent } from './pages/contact/new-event-form/location-form/location-form.component';
 import { CommonModule, DatePipe } from '@angular/common';
 
@@ -85,6 +85,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     BrowserAnimationsModule,
     BrowserModule,
     CommonModule,
+    FormsModule,
     HttpClientModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
     NoopAnimationsModule,

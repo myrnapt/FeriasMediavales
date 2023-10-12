@@ -35,7 +35,7 @@ export class EventsService {
   }
 
   publishEvent(eventId: string, isPublished: boolean): Observable<any> {
-    const url = `${this.apiUrl}${eventId}`; // Puedes ajustar la URL según tu API
+    const url = `${this.apiUrl}${eventId}`;
     return this.http.put(url, { isPublished });
   }
 

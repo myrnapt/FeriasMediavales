@@ -29,7 +29,8 @@ export class LoginComponent{
     if (this.form.valid) {
       this.authService.login(this.form.value)
       .then(() => this.router.navigate(['/dashboard']))
-      .catch(error => console.log(error));
+      .catch(() => this.toastr.error('Usuario o contraseña incorrectos', 'Error de login')
+      );
     } else { 
       this.form.markAllAsTouched();
       this.toastr.error('Usuario o contraseña incorrectos', 'Error de login')

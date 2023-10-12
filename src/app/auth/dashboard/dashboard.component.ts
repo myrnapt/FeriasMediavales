@@ -24,18 +24,19 @@ export class DashboardComponent implements OnInit  {
   ) {}
 
   getEvents() {
-    this._eventService.getEventos().subscribe(
-      (data) => {
+    this._eventService.getEventos()
+    .subscribe({
+      next: (data) => {
         console.log(data);
-        this.LIST_EVENTS = data.sort((a, b) => {
-          return new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime();
-        });
+        data = data.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
+        const unpublishedEvents = data.filter(event => !event.isPublished);
+        const publishedEvents = data.filter(event => event.isPublished);
+        this.LIST_EVENTS = [...unpublishedEvents, ...publishedEvents];
       },
-      (error) => {
-        console.log(error);
-      }
-    );
+      error: (error) => {  console.log(error) }
+    })
   }
+  
   
   deleteEvent(id: any) {
     const confirmed = confirm('¿Seguro que quiere eliminar el evento?');
@@ -78,7 +79,6 @@ export class DashboardComponent implements OnInit  {
   }
 
   modifyEvent(id: string) {
-    // Tu lógica para modificar eventos
   }
 
 publishEvent(eventID: string) {
