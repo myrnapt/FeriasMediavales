@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Events } from 'src/app/interfaces/events.interface';
 import { EventsService } from 'src/app/services/events.service';
@@ -9,10 +9,12 @@ import { EventsService } from 'src/app/services/events.service';
   styleUrls: ['./searchbar.component.scss']
 })
 export class SearchbarComponent implements OnInit {
+  
+  @Output() publishEvents: EventEmitter<Events[]> = new EventEmitter<Events[]>();
 
+ 
   searchQuery: string = '';
   PUBLISHED_EVENTS: Events[] = [];
-  searchResults: any;
   searchForm = this.fb.nonNullable.group({
     searchValue: '',
   })
@@ -25,7 +27,6 @@ export class SearchbarComponent implements OnInit {
     this._eventService.getEventos()
       .subscribe({
         next: (data) => {
-          console.log(data, 'searchbar');
           this.PUBLISHED_EVENTS = data;
         },
         error: (error) => { console.log(error) }
@@ -37,8 +38,7 @@ export class SearchbarComponent implements OnInit {
   }
 
   onSearch(): void {
-    this.searchQuery = this.searchForm.value.searchValue.toLowerCase(); // Ensure it's in lowercase
-  
+    this.searchQuery = this.searchForm.value.searchValue.toLowerCase();
     if (this.searchQuery) {
       this.PUBLISHED_EVENTS = this.PUBLISHED_EVENTS.filter(event => {
         return (
@@ -50,7 +50,11 @@ export class SearchbarComponent implements OnInit {
     } else {
       this.getEvents();
     }
+    this.getEvents();
+      this.sendEventsToParent();
   }
-  
 
+  sendEventsToParent() {
+    this.publishEvents.emit(this.PUBLISHED_EVENTS);
+  }
 }

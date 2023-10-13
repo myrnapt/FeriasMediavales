@@ -1,23 +1,4 @@
-<form [formGroup]="searchForm" class="m-5" (ngSubmit)="onSearch()" id="searchBar">
-  <div class="p-1 bg-secondary rounded rounded-pill shadow-sm mb-4">
-    <div class="input-group ms-1">
-      <input
-        type="text"
-        placeholder="Busca un evento..."
-        formControlName="searchValue"
-        class="form-control border-0 bg-secondary " />
-      <div class="input-group-append">
-        <button
-          id="button-addon1"
-          type="submit"
-          class="btn btn-link text-light">
-          <i class="fa fa-search"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-</form>
-
+<header-searchbar (publishEvents)="handlePublishedEvents($event)"></header-searchbar>
 <div class="container">
 <div class="row">
   <div class="col-md-4" *ngFor="let event of PUBLISHED_EVENTS">

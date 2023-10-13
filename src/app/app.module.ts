@@ -20,7 +20,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './pages/home/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { SearchbarComponent } from './pages/home/header/searchbar/searchbar.component';
+import { SearchbarComponent } from './pages/fairs/searchbar/searchbar.component';
 
 //DATABASE
 import { environment } from 'src/environments/environment';

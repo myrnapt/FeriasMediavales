@@ -32,6 +32,15 @@ img {
     width: 30vw;
 }
 
+button {
+    border-radius: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
 @media screen and (max-width: 700px) {
 
     .row {
