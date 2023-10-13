@@ -1,0 +1,19 @@
+<div class="container">
+  <div *ngIf="event">
+    <p class="text-decoration-underline display-5">
+      {{ event.name }}
+    </p>
+    <h3 >
+      {{ event.direccion + ", " + event.region + ", " + event.provincia }}
+    </h3>
+    <i> Desde el 
+     <b> {{ event.dataStart | date: 'dd/MM/yyyy'  }}  </b> 
+     hasta el 
+     <b> {{ event.dataEnd | date: 'dd/MM/yyyy'}}  </b>
+    </i>
+    <p class="mt-4">{{ event.description }}</p>
+    <h5 class="fw-bold"> Contacto: </h5>
+    <p> <b> Correo electronico: </b>  {{event.email}} <br>
+     <b> Teléfono: </b> {{event.telephone}} </p>
+  </div>
+</div>

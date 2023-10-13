@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { finalize } from 'rxjs';
 import { Events } from 'src/app/interfaces/events.interface';
 import { EventsService } from 'src/app/services/events.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pages-fairs',
@@ -16,12 +17,12 @@ export class FairsComponent implements OnInit {
 
   }
   PUBLISHED_EVENTS: Events[] = [];
+  selectedEvent: Events | null = null;
 
-  constructor(private _eventService: EventsService, private fb: FormBuilder) { }
-
-  toggleDescription(event: any) {
-    event.showFullDescription = !event.showFullDescription;
-  }
+  constructor(
+    private _eventService: EventsService, 
+    private fb: FormBuilder,
+    private router: Router) { }
 
   getEvents() {
     this._eventService.getEventos()
@@ -39,6 +40,11 @@ export class FairsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEvents()
+  }
+
+  redirigirAFormulario(eventID: any) {
+    this.selectedEvent = this.PUBLISHED_EVENTS.find(event => event._id === eventID);
+    this.router.navigate(['mercado/' + eventID]);
   }
 }
 

@@ -9,6 +9,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './auth/dashboard/dashboard.component';
 import { NewEventFormComponent } from './pages/contact/new-event-form/new-event-form.component';
 import { FaqComponent } from './pages/home/faq/faq.component';
+import { FairPageComponent } from './pages/fairs/fair-page/fair-page.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
@@ -44,6 +45,10 @@ const routes: Routes = [
   { 
     path: 'editar-formulario/:id',
     component: NewEventFormComponent,
+  },
+  { 
+    path: 'mercado/:id',
+    component: FairPageComponent,
   },
   { 
     path: 'login',

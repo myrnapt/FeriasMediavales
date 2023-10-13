@@ -3,6 +3,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule, DatePipe } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +17,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ErrorPageComponent } from './pages/errorPage/errorPage.component';
 import { EventPreviewsComponent } from './pages/home/event-previews/event-previews.component';
 import { FairsComponent } from './pages/fairs/fairs.component';
+import { FairPageComponent } from './pages/fairs/fair-page/fair-page.component';
 import { FaqComponent } from './pages/home/faq/faq.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './pages/home/header/header.component';
@@ -28,9 +31,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { NewEventFormComponent } from './pages/contact/new-event-form/new-event-form.component';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocationFormComponent } from './pages/contact/new-event-form/location-form/location-form.component';
-import { CommonModule, DatePipe } from '@angular/common';
 
 //COOKIES CONFIGURATION
 const cookieConfig:NgcCookieConsentConfig = {
@@ -69,6 +70,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     ErrorPageComponent,
     EventPreviewsComponent,
     FairsComponent,
+    FairPageComponent,
     FaqComponent,
     FooterComponent,
     HeaderComponent,

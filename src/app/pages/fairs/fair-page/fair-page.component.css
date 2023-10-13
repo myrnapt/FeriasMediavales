@@ -1,0 +1,18 @@
+.container {
+    margin-top: 10px;
+    background-color: #ffffff;
+    width: 50vw;
+    padding: 5%;
+    margin-bottom: 30px;
+}
+
+@media (max-width:1200px) {
+
+    .container {
+        background-color: #ffffff;
+        width: 80vw;
+        padding: 5%;
+    }
+
+}
+

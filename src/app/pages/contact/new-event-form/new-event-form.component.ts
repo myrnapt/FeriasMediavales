@@ -3,7 +3,6 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
-  AbstractControl,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -19,7 +18,7 @@ import { DatePipe } from '@angular/common';
 })
 export class NewEventFormComponent implements OnInit {
   @ViewChild(LocationFormComponent)
-  locationFormComponent: LocationFormComponent; // Add this line
+  locationFormComponent: LocationFormComponent;
 
   selectedEvent: Events | null = null;
   eventForm: FormGroup;
