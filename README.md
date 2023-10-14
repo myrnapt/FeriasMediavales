@@ -11,6 +11,6 @@ Para ejecutar el proyecto en local:
   3. Ejecturar ng serve -o
   4. Descargar el repositorio del backend: https://github.com/myrnapt/API
   5. Ejecutar npm install
-  6. Ejecutar npm run build
+  6. Ejecutar npm run dev
 
 Para entrar al panel del administrador hacer click en en boton LOGIN del footer o navegar a /login
