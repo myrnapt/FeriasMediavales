@@ -21,22 +21,20 @@ export class FairsComponent implements OnInit {
 
   constructor(
     private _eventService: EventsService, 
-    private fb: FormBuilder,
     private router: Router) { }
 
-  getEvents() {
-    this._eventService.getEventos()
-      .pipe(
-        finalize(() => console.log())
-      )
-      .subscribe({
-        next: (data) => {
-          this.PUBLISHED_EVENTS = data;
-        },
-        error: (error) => { console.log(error) }
-      })
-
-  }
+    getEvents() {
+      this._eventService.getEventos()
+        .pipe(
+          finalize(() => console.log())
+        )
+        .subscribe({
+          next: (data) => {
+            this.PUBLISHED_EVENTS = data.filter(event => event.isPublished === true);
+          },
+          error: (error) => { console.log(error) }
+        });
+    }
 
   ngOnInit(): void {
     this.getEvents()

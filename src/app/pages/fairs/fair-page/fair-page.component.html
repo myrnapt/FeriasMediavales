@@ -1,11 +1,11 @@
 <div class="container">
   <div *ngIf="event">
     <p class="text-decoration-underline display-5">
-      {{ event.name }}
+      {{ event.name | titlecase }}
     </p>
-    <h3 >
+    <h4 >
       {{ event.direccion + ", " + event.region + ", " + event.provincia }}
-    </h3>
+    </h4>
     <i> Desde el 
      <b> {{ event.dataStart | date: 'dd/MM/yyyy'  }}  </b> 
      hasta el 
@@ -15,5 +15,6 @@
     <h5 class="fw-bold"> Contacto: </h5>
     <p> <b> Correo electronico: </b>  {{event.email}} <br>
      <b> Teléfono: </b> {{event.telephone}} </p>
+     <button class="btn btn-secondary float-end" routerLink="/mercados"> VOLVER </button>
   </div>
 </div>

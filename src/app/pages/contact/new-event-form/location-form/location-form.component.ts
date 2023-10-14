@@ -54,7 +54,7 @@ export class LocationFormComponent {
   }
 
   onSubmit() {
-    console.log('Datos del formulario: ', this.formMapas.value);
+    this.formMapas.reset()
   }
 
 

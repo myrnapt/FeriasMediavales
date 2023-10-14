@@ -19,7 +19,8 @@ import { DatePipe } from '@angular/common';
 export class NewEventFormComponent implements OnInit {
   @ViewChild(LocationFormComponent)
   locationFormComponent: LocationFormComponent;
-
+  
+  preview!: string;
   selectedEvent: Events | null = null;
   eventForm: FormGroup;
   title: string = 'Formulario del evento';
@@ -67,19 +68,6 @@ export class NewEventFormComponent implements OnInit {
   }
 
   //ENVIAMOS EL FORMULARIO Y LO VALIDAMOS
-  onFileSelect(event: any) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.eventForm.patchValue({ image: file });
-    const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-    if (file && allowedMimeTypes.includes(file.type)) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imageData = reader.result as string;
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-
   onSubmit() {
     this.mergeFormValues();
 
