@@ -2,7 +2,7 @@
 
 Este proyecto a sido generado con [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
 
-Puede visitarlo en: https://ferias-mediavales.vercel.app/
+Puede visitarlo en: https://ferias-mediavales.vercel.app/ (hace falta descargar el backend(paso 4) y ejecutarlo para ver los eventos)
 
 Para ejecutar el proyecto en local:
   
