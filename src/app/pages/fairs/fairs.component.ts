@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { finalize } from 'rxjs';
 import { Events } from 'src/app/interfaces/events.interface';
 import { EventsService } from 'src/app/services/events.service';
