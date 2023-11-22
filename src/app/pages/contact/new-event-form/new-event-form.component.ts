@@ -107,6 +107,7 @@ export class NewEventFormComponent implements OnInit {
               'Formulario enviado con éxito!'
             );
             this.eventForm.reset();
+            this.router.navigate(['/mercados']);
           },
           error: (error) => {
             console.log(error, 'Form fail');

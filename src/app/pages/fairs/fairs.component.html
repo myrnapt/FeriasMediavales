@@ -1,5 +1,13 @@
 <header-searchbar (publishEvents)="handlePublishedEvents($event)"></header-searchbar>
 <div class="container mb-4">
+  <div class="row">
+    <div class="col" *ngIf="searchError">
+        <p>
+          ¡Ups! No hemos encontrado ferias con ese nombre, por favor prueba otra
+          búsqueda.
+        </p>
+    </div>
+  </div>
 <div class="row">
   <div class="col-lg-6 col-md-12" *ngFor="let event of PUBLISHED_EVENTS">
       <div class="card">

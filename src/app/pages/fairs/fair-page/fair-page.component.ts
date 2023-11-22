@@ -21,10 +21,10 @@ export class FairPageComponent implements OnInit {
 
   getEvent() {
     this._eventService.getEvent(this.id).subscribe((data) => {
-      this.event = data; // Asigna los datos a this.event
+      this.event = data;
     });
   }
-
+  
   ngOnInit() {
     this.getEvent();
   }

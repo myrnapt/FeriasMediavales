@@ -39,7 +39,7 @@ export class SearchbarComponent implements OnInit {
 
   onSearch(): void {
     this.searchQuery = this.searchForm.value.searchValue.toLowerCase();
-    if (this.searchQuery) {
+    if (this.searchQuery.length >= 3) {
       this.PUBLISHED_EVENTS = this.PUBLISHED_EVENTS.filter(event => {
         return (
           event.region.toLowerCase().includes(this.searchQuery) ||

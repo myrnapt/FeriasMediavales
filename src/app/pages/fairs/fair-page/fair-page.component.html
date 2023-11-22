@@ -1,20 +1,25 @@
 <div class="container">
-  <div *ngIf="event">
-    <p class="text-decoration-underline display-5">
-      {{ event.name | titlecase }}
-    </p>
-    <h4 >
-      {{ event.direccion + ", " + event.region + ", " + event.provincia }}
-    </h4>
-    <i> Desde el 
-     <b> {{ event.dataStart | date: 'dd/MM/yyyy'  }}  </b> 
-     hasta el 
-     <b> {{ event.dataEnd | date: 'dd/MM/yyyy'}}  </b>
-    </i>
-    <p class="mt-4">{{ event.description }}</p>
-    <h5 class="fw-bold"> Contacto: </h5>
-    <p> <b> Correo electronico: </b>  {{event.email}} <br>
-     <b> Teléfono: </b> {{event.telephone}} </p>
-     <button class="btn btn-secondary float-end" routerLink="/mercados"> VOLVER </button>
+    <div class="row">
+      <div class="col">
+        <div *ngIf="event">
+          <p class="text-decoration-underline display-5">
+            {{ event.name | titlecase }}
+          </p>
+          <h4>
+            {{ event.direccion + ", " + event.region + ", " + event.provincia }}
+          </h4>
+          <i> Desde el
+            <b> {{ event.dataStart | date: 'dd/MM/yyyy' }} </b>
+            hasta el
+            <b> {{ event.dataEnd | date: 'dd/MM/yyyy'}} </b>
+          </i>
+          <p class="mt-4">{{ event.description }}</p>
+          <h5 class="fw-bold"> Contacto: </h5>
+          <p> <b> Correo electronico: </b> {{event.email}} <br>
+            <b> Teléfono: </b> {{event.telephone}} </p>
+          <button class="btn btn-secondary float-end" routerLink="/mercados">
+            VOLVER </button>
+        </div>
+      </div>
+    </div>
   </div>
-</div>

@@ -12,7 +12,7 @@ img {
 .nav-link {
     color: #8f5f3c;
     font-weight: 500;
-    font-size: 1vw;
+    font-size: 1.3rem;
     margin-left: 20px;
     
 }
@@ -28,17 +28,6 @@ img {
     color: #c48851;
 }
 
-.dropdown-menu {
-    border-radius: 0%;
-    border: none;
-    background-color: #bd9477;
-    font-size: 1vw;
-}
-
-.dropdown-menu :hover {
-    color: #eeedeb!important;
-    background-color: #bd9477!important;
-}
 
 @keyframes slideIn {
     0% {
@@ -66,28 +55,14 @@ img {
         font-size: 20px;
     }
 
-    .dropdown-menu {
-        border-radius: 0%;
-        border: none;
-        background-color: #eeedeb;
-        font-size: 2vw;
-        width: 30vw;
-        box-shadow: none;
-
-    }
-
     img {
-        height: 8vh;
+        display: none;
     }
     
     .navbar {
         box-shadow: none;
     }
 
-    .dropdown-menu :hover {
-        color: #c48851!important;
-        background-color:#eeedeb!important; ;
-    }
     
     @keyframes slideIn {
         0% {

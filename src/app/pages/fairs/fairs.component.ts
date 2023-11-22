@@ -11,32 +11,36 @@ import { Router } from '@angular/router';
 })
 export class FairsComponent implements OnInit {
 
-  handlePublishedEvents(events: Events[]) {
-    this.PUBLISHED_EVENTS = events;
-
-  }
   PUBLISHED_EVENTS: Events[] = [];
   selectedEvent: Events | null = null;
+  searchError: boolean = false;
 
   constructor(
-    private _eventService: EventsService, 
+    private _eventService: EventsService,
     private router: Router) { }
 
-    getEvents() {
-      this._eventService.getEventos()
-        .pipe(
-          finalize(() => console.log())
-        )
-        .subscribe({
-          next: (data) => {
-            this.PUBLISHED_EVENTS = data.filter(event => event.isPublished === true);
-          },
-          error: (error) => { console.log(error) }
-        });
-    }
+  handlePublishedEvents(events: Events[]) {
+    this.PUBLISHED_EVENTS = events;
+    if (this.PUBLISHED_EVENTS.length === 0) {
+      this.searchError = true;
+    } else { this.searchError = false }
+  }
+
+  getEvents() {
+    this._eventService.getEventos()
+      .subscribe({
+        next: (data) => {
+          this.PUBLISHED_EVENTS = data.filter(event => event.isPublished === true);
+        },
+        error: (error) => {
+          console.error('Error fetching events:', error);
+        }
+      });
+  }
+
 
   ngOnInit(): void {
-    this.getEvents()
+    this.getEvents();
   }
 
   redirigirAFormulario(eventID: any) {
