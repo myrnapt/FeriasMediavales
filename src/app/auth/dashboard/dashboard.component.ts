@@ -12,9 +12,14 @@ import { EventsService } from 'src/app/services/events.service';
 })
 export class DashboardComponent implements OnInit  {
   
-  readonly APIUrl = "http://localhost:5038/api/mercados-mediavales/"
+  readonly APIUrl = "https://magnificent-long-underwear-frog.cyclic.app/eventos/"
   LIST_EVENTS: Events[] = [];
   selectedEvent: Events | null = null;
+
+  // Add these properties to your component class
+  sortCriteria: string | null = null;
+  sortOrder: 'asc' | 'desc' = 'asc';
+
 
   constructor(
     private _eventService: EventsService,
@@ -25,16 +30,26 @@ export class DashboardComponent implements OnInit  {
 
   getEvents() {
     this._eventService.getEventos()
-    .subscribe({
-      next: (data) => {
-        console.log(data);
-        data = data.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
-        const unpublishedEvents = data.filter(event => !event.isPublished);
-        const publishedEvents = data.filter(event => event.isPublished);
-        this.LIST_EVENTS = [...unpublishedEvents, ...publishedEvents];
-      },
-      error: (error) => {  console.log(error) }
-    })
+      .subscribe({
+        next: (data) => {
+          data = data.sort((a, b) => {
+            if (this.sortCriteria === 'name') {
+              return this.sortOrder === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+            } else if (this.sortCriteria === 'date') {
+              return this.sortOrder === 'asc' ? new Date(a.dataStart).getTime() - new Date(b.dataStart).getTime() :
+                                               new Date(b.dataStart).getTime() - new Date(a.dataStart).getTime();
+            } else {
+              // Default sorting by creation date if no criteria is selected
+              return new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime();
+            }
+          });
+  
+          const unpublishedEvents = data.filter(event => !event.isPublished);
+          const publishedEvents = data.filter(event => event.isPublished);
+          this.LIST_EVENTS = [...unpublishedEvents, ...publishedEvents];
+        },
+        error: (error) => { console.log(error) }
+      });
   }
   
   
@@ -100,6 +115,16 @@ publishEvent(eventID: string) {
     console.log('La publicación del evento ha sido cancelada');
   }
 }
+
+sortEvents(criteria: string) {
+  if (this.sortCriteria === criteria) {
+    this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+  } else {
+    this.sortCriteria = criteria;
+  }
+  this.getEvents();
+}
+
 
   
 }

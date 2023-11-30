@@ -15,10 +15,9 @@ export class FairPageComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private _eventService: EventsService
-  ) {
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
-  }
-
+    ) 
+    { this.id = this.activatedRoute.snapshot.paramMap.get('id') }
+  
   getEvent() {
     this._eventService.getEvent(this.id).subscribe((data) => {
       this.event = data;
@@ -28,4 +27,6 @@ export class FairPageComponent implements OnInit {
   ngOnInit() {
     this.getEvent();
   }
+
+ 
 }

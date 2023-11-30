@@ -128,20 +128,6 @@ export class LocationFormComponent {
   resetFormData() {
     this.formMapas.reset()
   }
-
-  handleMarkerDrag(event: any): void {
-    const newPosition = event.latLng;
-    const geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ location: newPosition }, (results, status) => {
-      if (status === 'OK' && results[0]) {
-        const place = results[0];
-        this.llenarFormulario(place);
-      } else {
-        console.error('Error reverse geocoding:', status);
-      }
-    });
-  }
-  
   
   cargarMapa(position: any): any {
     const opciones = {
@@ -160,13 +146,9 @@ export class LocationFormComponent {
 
     const markerPosition = new google.maps.Marker({
       position: this.mapa.getCenter(),
-      draggable: true, 
     });
 
     markerPosition.setMap(this.mapa);
     this.markers.push(markerPosition);
-    google.maps.event.addListener(markerPosition, 'dragend', (event) => {
-      this.handleMarkerDrag(event);
-    });
   }
 }

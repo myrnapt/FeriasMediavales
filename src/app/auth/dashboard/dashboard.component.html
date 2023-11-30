@@ -15,14 +15,14 @@
           <span class="fw-bold h2"> EVENTOS </span>
           <button class="btn btn-secondary float-end" (click)="redirigirARuta()"> NUEVO </button> 
           <br>
-          <span> <i>Los eventos <b class='bg-light'>coloreados</b> no han sido publicados todavia</i></span>
+          <span> <i>Los eventos <b class='bg-light'>coloreados</b> no han sido publicados todavia. El orden de muestra puede ser cambiado haciendo click en NOMBRE o FECHA</i> </span>
 
     <!-- PROPIEDADES -->
           <table class="table table-hover mt-3">
             <thead>
               <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col" class="d-none d-md-table-cell">Fecha</th>
+                <th scope="col" (click)="sortEvents('name')" style="cursor: pointer;">Nombre</th>
+                <th scope="col" class="d-none d-md-table-cell" (click)="sortEvents('date')" style="cursor: pointer;">Fecha</th>
                 <th scope="col">Ubicación</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Borrar</th>
