@@ -7,4 +7,5 @@ export const environment = {
     authDomain: 'mercados-mediavales-esp.firebaseapp.com',
     messagingSenderId: '1018666768574',
   },
+  
 };
