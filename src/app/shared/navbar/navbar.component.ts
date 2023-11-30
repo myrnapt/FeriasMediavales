@@ -20,6 +20,16 @@ export class NavbarComponent {
   }
 
   scrollToComponent(componentId: string): void {
+    if (this.router.url !== '/home') {
+      this.router.navigateByUrl('/home').then(() => {
+        this.doScroll(componentId);
+      });
+    } else {
+      this.doScroll(componentId);
+    }
+  }
+
+  private doScroll(componentId: string): void {
     this.router.navigate([], {
       fragment: componentId,
       queryParamsHandling: 'merge',
@@ -28,5 +38,4 @@ export class NavbarComponent {
 
     this.viewportScroller.scrollToAnchor(componentId);
   }
-
 }
