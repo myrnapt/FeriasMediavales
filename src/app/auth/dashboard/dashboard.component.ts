@@ -26,7 +26,6 @@ export class DashboardComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private toastr: ToastrService,
-    private datePipe: DatePipe,
   ) { }
 
 
@@ -49,7 +48,6 @@ export class DashboardComponent implements OnInit {
               return this.sortOrder === 'asc' ? new Date(a.dataStart).getTime() - new Date(b.dataStart).getTime() :
                 new Date(b.dataStart).getTime() - new Date(a.dataStart).getTime();
             } else {
-              // Default sorting by creation date if no criteria is selected
               return new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime();
             }
           });

@@ -30,14 +30,17 @@ export class FairsComponent implements OnInit {
     this._eventService.getEventos()
       .subscribe({
         next: (data) => {
-          this.PUBLISHED_EVENTS = data.filter(event => event.isPublished === true);
+          const currentDate = new Date();
+          this.PUBLISHED_EVENTS = data.filter(event => 
+            event.isPublished === true &&
+            new Date(event.dataEnd) >= currentDate
+          );
         },
         error: (error) => {
           console.error('Error fetching events:', error);
         }
       });
   }
-
 
   ngOnInit(): void {
     this.getEvents();
